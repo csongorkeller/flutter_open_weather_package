@@ -1,14 +1,12 @@
 # open_weather
 
-A new Flutter package project.
+Dart package in order to make use of OpenWeather api easily. The plugin offers access to various endpoints
+
+The plugin also supports multiple unit types. 
+To receive all data in Fahrenheit, use ```standard```
+For Celsius, use ```metric```
+For Kelvin use ```imperial```
 
 ## Getting Started
+In order to start using the plugin, an ``` API KEY``` is required to make on ```openweathermap.org```
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
