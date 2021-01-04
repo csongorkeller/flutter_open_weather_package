@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'wind.g.dart';
 
-@JsonSerializable(anyMap: true, explicitToJson: true)
+@JsonSerializable()
 class Wind {
   double speed;
   double deg;

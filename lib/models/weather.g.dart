@@ -8,26 +8,16 @@ part of 'weather.dart';
 
 Weather _$WeatherFromJson(Map json) {
   return Weather(
-    weatherStatus: json['weatherStatus'] as String,
-    weatherDescription: json['weatherDescription'] as String,
-    temperature: json['temperature'] == null
-        ? null
-        : Temperature.fromJson((json['temperature'] as Map)?.map(
-            (k, e) => MapEntry(k as String, e),
-          )),
-    weatherIcon: json['weatherIcon'] as String,
-    wind: json['wind'] == null
-        ? null
-        : Wind.fromJson((json['wind'] as Map)?.map(
-            (k, e) => MapEntry(k as String, e),
-          )),
+    id: json['id'] as int,
+    main: json['main'] as String,
+    description: json['description'] as String,
+    icon: json['icon'] as String,
   );
 }
 
 Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
-      'weatherStatus': instance.weatherStatus,
-      'weatherDescription': instance.weatherDescription,
-      'weatherIcon': instance.weatherIcon,
-      'temperature': instance.temperature?.toJson(),
-      'wind': instance.wind?.toJson(),
+      'id': instance.id,
+      'main': instance.main,
+      'description': instance.description,
+      'icon': instance.icon,
     };
