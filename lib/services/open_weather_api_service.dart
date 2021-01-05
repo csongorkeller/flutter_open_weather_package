@@ -20,9 +20,8 @@ class OpenWeather {
 
       return WeatherData.fromJson(_currentWeather);
     } catch (err) {
-      print(err);
+      throw err;
     }
-    return null;
   }
 
   Future<WeatherData> currentWeatherByLocation(
@@ -35,9 +34,8 @@ class OpenWeather {
 
       return WeatherData.fromJson(_currentWeather);
     } catch (err) {
-      print(err);
+      throw err;
     }
-    return null;
   }
 
   Future<Map<String, dynamic>> _sendRequest(
@@ -76,7 +74,6 @@ class OpenWeather {
     }
 
     url += 'appid=$apiKey&';
-    print(url);
     return url;
   }
 }
