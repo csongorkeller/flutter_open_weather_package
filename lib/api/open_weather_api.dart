@@ -1,21 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:open_weather/models/weather.dart';
 import 'package:http/http.dart' as http;
+import 'package:open_weather/enums/weather_units.dart';
 import 'package:open_weather/models/weather_data.dart';
 import 'package:open_weather/utils/constants.dart';
 
 class OpenWeather {
-  String apiKey;
-
   OpenWeather({@required this.apiKey});
 
+  final String apiKey;
+
   Future<WeatherData> currentWeatherByCityName(
-      {@required String cityName}) async {
+      {@required String cityName,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather =
-          await _sendRequest('weather', cityName: cityName);
+      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+          cityName: cityName, weatherUnits: weatherUnits);
 
       return WeatherData.fromJson(_currentWeather);
     } catch (err) {
@@ -24,9 +25,29 @@ class OpenWeather {
     return null;
   }
 
-  Future<Map<String, dynamic>> _sendRequest(String tag,
-      {double lat, double lon, String cityName}) async {
-    String url = _buildUrl(tag, cityName, lat, lon);
+  Future<WeatherData> currentWeatherByLocation(
+      {@required double latitude,
+      @required double longitude,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+    try {
+      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+          lat: latitude, lon: longitude, weatherUnits: weatherUnits);
+
+      return WeatherData.fromJson(_currentWeather);
+    } catch (err) {
+      print(err);
+    }
+    return null;
+  }
+
+  Future<Map<String, dynamic>> _sendRequest(
+    String tag, {
+    double lat,
+    double lon,
+    String cityName,
+    WeatherUnits weatherUnits,
+  }) async {
+    String url = _buildUrl(tag, cityName, lat, lon, weatherUnits);
 
     http.Response response = await http.get(url);
 
@@ -34,21 +55,28 @@ class OpenWeather {
       Map<String, dynamic> jsonBody = json.decode(response.body);
       return jsonBody;
     } else {
-      throw Exception("The API threw an exception: ${response.body}");
+      throw Exception("Open Weather API exception: ${response.body}");
     }
   }
 
-  String _buildUrl(String tag, String cityName, double lat, double lon) {
-    String url = AppStrings.API_BASE_URL + '$tag?';
+  String _buildUrl(
+    String tag,
+    String cityName,
+    double lat,
+    double lon,
+    WeatherUnits weatherUnits,
+  ) {
+    String url = AppStrings.API_BASE_URL +
+        '$tag?units=${weatherUnitsString[weatherUnits]}';
 
     if (cityName != null) {
-      url += 'q=$cityName&';
+      url += '&q=$cityName&';
     } else {
-      url += 'lat=$lat&lon=$lon&';
+      url += '&lat=$lat&lon=$lon&';
     }
 
     url += 'appid=$apiKey&';
-
+    print(url);
     return url;
   }
 }
