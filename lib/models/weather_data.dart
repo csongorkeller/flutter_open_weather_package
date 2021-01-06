@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:open_weather/models/coordinates.dart';
-import 'package:open_weather/models/main.dart';
-import 'package:open_weather/models/weather.dart';
+import 'package:open_weather/models/details.dart';
+import 'package:open_weather/models/temperature.dart';
 import 'package:open_weather/models/wind.dart';
 
 part 'weather_data.g.dart';
 
 @JsonSerializable()
 class WeatherData {
-  List<Weather> weather;
+  @JsonKey(name: 'weather')
+  List<Details> details;
   Wind wind;
-  Main main;
-  Coord coord;
+  @JsonKey(name: 'main')
+  Temperature temperature;
+  @JsonKey(name: 'coord')
+  Coordinates coordinates;
   String name;
 
   WeatherData({
-    this.weather,
-    this.main,
+    this.details,
+    this.temperature,
     this.wind,
-    this.coord,
+    this.coordinates,
     this.name,
   });
 

@@ -12,7 +12,8 @@ class WeatherDescriptionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(this.weatherData.weather.first.description.toUpperCase(),
+      child: Text(
+          this.weatherData.details.first.weatherShortDescription.toUpperCase(),
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 30,

@@ -3,13 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 part 'coordinates.g.dart';
 
 @JsonSerializable()
-class Coord {
+class Coordinates {
   double lon;
   double lat;
 
-  Coord({this.lon, this.lat});
+  Coordinates({this.lon, this.lat});
 
-  factory Coord.fromJson(Map<String, dynamic> json) => _$CoordFromJson(json);
+  factory Coordinates.fromJson(Map<String, dynamic> json) =>
+      _$CoordinatesFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CoordToJson(this);
+  Map<String, dynamic> toJson() => _$CoordinatesToJson(this);
 }

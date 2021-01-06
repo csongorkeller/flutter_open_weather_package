@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main.dart';
+part of 'temperature.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Main _$MainFromJson(Map json) {
-  return Main(
-    temp: (json['temp'] as num)?.toDouble(),
+Temperature _$TemperatureFromJson(Map json) {
+  return Temperature(
+    currentTemperature: (json['temp'] as num)?.toDouble(),
     feelsLike: (json['feels_like'] as num)?.toDouble(),
     tempMin: (json['temp_min'] as num)?.toDouble(),
     tempMax: (json['temp_max'] as num)?.toDouble(),
@@ -17,8 +17,9 @@ Main _$MainFromJson(Map json) {
   );
 }
 
-Map<String, dynamic> _$MainToJson(Main instance) => <String, dynamic>{
-      'temp': instance.temp,
+Map<String, dynamic> _$TemperatureToJson(Temperature instance) =>
+    <String, dynamic>{
+      'temp': instance.currentTemperature,
       'feels_like': instance.feelsLike,
       'temp_min': instance.tempMin,
       'temp_max': instance.tempMax,

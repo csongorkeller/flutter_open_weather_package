@@ -15,7 +15,7 @@ class WeatherSummary extends StatelessWidget {
         Column(
           children: [
             Text(
-              '${_formatTemperature(this.weatherData.main.temp)}°',
+              '${_formatTemperature(this.weatherData.temperature.currentTemperature)}°',
               style: TextStyle(
                 fontSize: 50,
                 color: color,
@@ -23,7 +23,7 @@ class WeatherSummary extends StatelessWidget {
               ),
             ),
             Text(
-              'Feels like ${_formatTemperature(this.weatherData.main.feelsLike)}°',
+              'Feels like ${_formatTemperature(this.weatherData.temperature.feelsLike)}°',
               style: TextStyle(
                 fontSize: 18,
                 color: color,
@@ -35,7 +35,7 @@ class WeatherSummary extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Image.network(
-                'http://openweathermap.org/img/wn/${this.weatherData.weather.first.icon}@2x.png'))
+                'http://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png'))
       ]),
     );
   }

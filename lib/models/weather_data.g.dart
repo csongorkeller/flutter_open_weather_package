@@ -8,16 +8,16 @@ part of 'weather_data.dart';
 
 WeatherData _$WeatherDataFromJson(Map json) {
   return WeatherData(
-    weather: (json['weather'] as List)
+    details: (json['weather'] as List)
         ?.map((e) => e == null
             ? null
-            : Weather.fromJson((e as Map)?.map(
+            : Details.fromJson((e as Map)?.map(
                 (k, e) => MapEntry(k as String, e),
               )))
         ?.toList(),
-    main: json['main'] == null
+    temperature: json['main'] == null
         ? null
-        : Main.fromJson((json['main'] as Map)?.map(
+        : Temperature.fromJson((json['main'] as Map)?.map(
             (k, e) => MapEntry(k as String, e),
           )),
     wind: json['wind'] == null
@@ -25,9 +25,9 @@ WeatherData _$WeatherDataFromJson(Map json) {
         : Wind.fromJson((json['wind'] as Map)?.map(
             (k, e) => MapEntry(k as String, e),
           )),
-    coord: json['coord'] == null
+    coordinates: json['coord'] == null
         ? null
-        : Coord.fromJson((json['coord'] as Map)?.map(
+        : Coordinates.fromJson((json['coord'] as Map)?.map(
             (k, e) => MapEntry(k as String, e),
           )),
     name: json['name'] as String,
@@ -36,9 +36,9 @@ WeatherData _$WeatherDataFromJson(Map json) {
 
 Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
     <String, dynamic>{
-      'weather': instance.weather?.map((e) => e?.toJson())?.toList(),
+      'weather': instance.details?.map((e) => e?.toJson())?.toList(),
       'wind': instance.wind?.toJson(),
-      'main': instance.main?.toJson(),
-      'coord': instance.coord?.toJson(),
+      'main': instance.temperature?.toJson(),
+      'coord': instance.coordinates?.toJson(),
       'name': instance.name,
     };

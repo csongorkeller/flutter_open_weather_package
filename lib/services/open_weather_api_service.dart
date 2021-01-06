@@ -9,8 +9,7 @@ import 'package:open_weather/utils/constants.dart';
 class OpenWeather {
   OpenWeather({@required this.apiKey});
 
-  @required
-  String apiKey;
+  final String apiKey;
 
   Future<WeatherData> currentWeatherByCityName(
       {@required String cityName,

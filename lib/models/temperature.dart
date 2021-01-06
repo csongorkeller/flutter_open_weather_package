@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'main.g.dart';
+part 'temperature.g.dart';
 
 @JsonSerializable()
-class Main {
-  double temp;
+class Temperature {
+  @JsonKey(name: 'temp')
+  double currentTemperature;
   @JsonKey(name: 'feels_like')
   double feelsLike;
   @JsonKey(name: 'temp_min')
@@ -15,8 +16,8 @@ class Main {
   int pressure;
   int humidity;
 
-  Main({
-    this.temp,
+  Temperature({
+    this.currentTemperature,
     this.feelsLike,
     this.tempMin,
     this.tempMax,
@@ -24,7 +25,8 @@ class Main {
     this.humidity,
   });
 
-  factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
+  factory Temperature.fromJson(Map<String, dynamic> json) =>
+      _$TemperatureFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MainToJson(this);
+  Map<String, dynamic> toJson() => _$TemperatureToJson(this);
 }

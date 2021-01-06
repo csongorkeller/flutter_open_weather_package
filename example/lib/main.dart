@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
-  final String _cityName = 'Florida';
+  final String _cityName = 'Utrecht';
   final double _latitude = 52.3545828;
   final double _longitude = 4.7638781;
   OpenWeather openWeather;
@@ -38,10 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    /* openWeather = OpenWeather(apiKey: _key);
-    getCurrentweatherByCity().then((weatherData) {
-      print(weatherData.main.pressure);
-    }); */
+    openWeather = OpenWeather(apiKey: _key);
+    getCurrentweatherByCity().then((data) {});
 
     /* getCurrentweatherByLocation().then((weatherData) {
       print(weatherData.main.temp);

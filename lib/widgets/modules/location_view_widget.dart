@@ -26,7 +26,7 @@ class LocationView extends StatelessWidget {
           children: [
             Icon(Icons.location_on, color: color, size: 15),
             SizedBox(width: 10),
-            Text(this.weatherData.coord.lat.toString(),
+            Text(this.weatherData.coordinates.lat.toString(),
                 style: TextStyle(
                   fontSize: 16,
                   color: color,
@@ -36,7 +36,7 @@ class LocationView extends StatelessWidget {
                   fontSize: 16,
                   color: color,
                 )),
-            Text(this.weatherData.coord.lon.toString(),
+            Text(this.weatherData.coordinates.lon.toString(),
                 style: TextStyle(
                   fontSize: 16,
                   color: color,
