@@ -82,3 +82,5 @@ OpenWeatherByLocation(
               )
 
 ```
+
+For more info and demo implementation check the `example` folder.
