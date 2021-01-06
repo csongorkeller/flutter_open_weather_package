@@ -65,7 +65,7 @@ The `Coordinates` class holds the following info:
 - lat (latitude of the current place retrieved from the API)
 - lon (latitude of the current place retrieved from the API)
 
-The `Details` class holds the following info:
+The `Details` class holds the following info:\
 `Important! Details class retrieves a List, so you have to loop through it to access it's values.`
 
 - id (default ID coming from the API)
