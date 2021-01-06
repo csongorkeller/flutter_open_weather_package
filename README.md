@@ -4,9 +4,9 @@ Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap
 The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude).
 
 The plugin also supports multiple unit types:  
-To receive all data in Fahrenheit, use `weatherUnits: WeatherUnits.STANDARD`\
-For Celsius, use `weatherUnits: WeatherUnits.METRIC`\
-For Kelvin use `weatherUnits: WeatherUnits.IMPERIAL`
+To receive all data in Fahrenheit, use `WeatherUnits.STANDARD`\
+For Celsius, use `WeatherUnits.METRIC`\
+For Kelvin use `WeatherUnits.IMPERIAL`
 
 ## Install package
 
