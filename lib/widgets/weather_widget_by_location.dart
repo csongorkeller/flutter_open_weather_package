@@ -37,10 +37,15 @@ class _OpenWeatherByLocationState extends State<OpenWeatherByLocation> {
   }
 
   Future<WeatherData> _getCurrentweatherByLocation() async {
-    _weatherData = openWeather.currentWeatherByLocation(
-        latitude: widget.latitude,
-        longitude: widget.longitude,
-        weatherUnits: WeatherUnits.METRIC);
+    _weatherData = openWeather
+        .currentWeatherByLocation(
+            latitude: widget.latitude,
+            longitude: widget.longitude,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) {
+      print(err);
+      return err;
+    });
 
     return _weatherData;
   }
@@ -70,10 +75,9 @@ class _OpenWeatherByLocationState extends State<OpenWeatherByLocation> {
             ],
           ));
         } else if (snapshot.hasError) {
-          print(snapshot.hasError.toString());
           return Center(
               child: Text(
-            'Oops something went wrong, please check your credentials',
+            'Oops something went wrong!',
             style: TextStyle(color: widget.color),
           ));
         }

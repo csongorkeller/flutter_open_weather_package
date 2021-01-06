@@ -38,7 +38,10 @@ class _OpenWeatherByCityState extends State<OpenWeatherByCity> {
     _weatherData = openWeather
         .currentWeatherByCityName(
             cityName: widget.cityName, weatherUnits: widget.weatherUnits)
-        .catchError((err) => Future.error(err));
+        .catchError((err) {
+      print(err);
+      return err;
+    });
 
     return _weatherData;
   }
@@ -68,10 +71,9 @@ class _OpenWeatherByCityState extends State<OpenWeatherByCity> {
             ],
           ));
         } else if (snapshot.hasError) {
-          print(snapshot.hasError.toString());
           return Center(
               child: Text(
-            'Oops something went wrong, please check your credentials',
+            'Oops something went wrong!',
             style: TextStyle(color: widget.color),
           ));
         }

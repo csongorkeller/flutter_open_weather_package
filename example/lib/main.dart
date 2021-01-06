@@ -30,6 +30,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
+  final String _cityName = 'Florida';
+  final double _latitude = 52.3545828;
+  final double _longitude = 4.7638781;
   OpenWeather openWeather;
 
   @override
@@ -48,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<WeatherData> getCurrentweatherByCity() async {
     WeatherData weatherData = await openWeather
         .currentWeatherByCityName(
-            cityName: 'Utrecht', weatherUnits: WeatherUnits.METRIC)
+            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
         .catchError((err) => print(err));
 
     return weatherData;
@@ -57,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<WeatherData> getCurrentweatherByLocation() async {
     WeatherData weatherData = await openWeather
         .currentWeatherByLocation(
-            latitude: 52.0841037,
-            longitude: 4.9424092,
+            latitude: _latitude,
+            longitude: _longitude,
             weatherUnits: WeatherUnits.METRIC)
         .catchError((err) => print(err));
 
@@ -72,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.black,
           elevation: 0,
           title: Text(
-            'Demo By City Name',
+            'OpenWeather API demo',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -83,14 +86,18 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               OpenWeatherByCity(
                 apiKey: _key,
-                cityName: 'Moscow',
+                cityName: _cityName,
                 weatherUnits: WeatherUnits.METRIC,
+                color: Colors.white,
+              ),
+              Divider(
+                thickness: 1,
                 color: Colors.white,
               ),
               OpenWeatherByLocation(
                 apiKey: _key,
-                latitude: 52.0841037,
-                longitude: 4.9424092,
+                latitude: _latitude,
+                longitude: _longitude,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
               ),
