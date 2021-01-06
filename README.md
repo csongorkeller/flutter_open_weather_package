@@ -56,7 +56,55 @@ For fetching through geolocation, you can do the following:
             weatherUnits: WeatherUnits.METRIC)
         .catchError((err) => print(err));
 ```
+#### Accessing values
+
+In order to access the fetched weather values, you can go through each classes holding the specific values.\
+
+The `Coordinates` class holds the following info:
+
+- lat (latitude of the current place retrieved from the API)
+- lon (latitude of the current place retrieved from the API)
+
+The `Details` class holds the following info:
+`Important! Details class retrieves a List, so you have to loop through it to access it's values.`
+
+- id (default ID coming from the API)
+- weatherShortDescription (short description of the current weather conditions coming from the API)
+- weatherLongDescription (long description of the current weather conditions coming from the API)
+- icon (holds the icon name used by [OpenWeatherMAP API](https://openweathermap.org/weather-conditions))
+
+The `Temperature` class holds the following info:
+
+- currentTemperature (current temperature coming from the API)
+- feelsLike (feels like value coming from the API)
+- tempMin (minimum temperature value coming from the API)
+- tempMax (maximum temperature value coming from the API)
+- pressure (air pressure value coming from the API)
+- humidity (air humidity value coming from the API)
+
+The `Wind` class holds the following info:
+
+- speed (wind speed value coming from the API)
+- deg (wind degree value coming from the API)
+- gust (wind gust value coming from the API)
+
+To access them you can do the following:
+
+```dart
+WeatherData weatherData = await openWeather
+        .currentWeatherByCityName(
+            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err))
+        .then((data) {
+      print(data.details.first.weatherShortDescription);
+      print(data.name.toString());
+      print(data.temperature.currentTemperature);
+      print(data.wind.speed);
+    });
+```
+
 ### Prebuilt widgets
+
 Alternativel you can use the built in widgets to populate your app with some nice UI showing weather insights:
 
 For fetching through city name, you can do the following:
