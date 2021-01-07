@@ -7,10 +7,16 @@ import 'package:open_weather/widgets/modules/weather_description_view_widget.dar
 import 'package:open_weather/widgets/modules/weather_summary_widget.dart';
 
 class OpenWeatherByLocation extends StatefulWidget {
+  /// Built in widget to support easy integration.
+  /// The widget lists some weather data based on the [latitude] and [longitude]
+  /// With the help of [weatherUnits] you specify the type of unit.
+  /// Please note, in order to use the widget a valid [apiKey] is required.
+  /// For more info, read the documentation.
   @required
   final String apiKey;
   @required
   final double latitude;
+  @required
   final double longitude;
   final WeatherUnits weatherUnits;
   final Color color;
@@ -19,7 +25,7 @@ class OpenWeatherByLocation extends StatefulWidget {
       this.latitude,
       this.longitude,
       this.weatherUnits = WeatherUnits.IMPERIAL,
-      this.color});
+      this.color = Colors.black});
   @override
   _OpenWeatherByLocationState createState() => _OpenWeatherByLocationState();
 }

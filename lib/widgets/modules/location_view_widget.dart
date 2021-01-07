@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:open_weather/models/weather_data.dart';
 
 class LocationView extends StatelessWidget {
+  /// Built in widget to support easy integration.
+  /// The widget lists the name of the location and the geo-coordinates of it
+  /// With the help of [color] you specify the overall color scheme.
+  /// Please note, in order to use the widget [weatherData] should not be null.
+  /// For more info, read the documentation.
   final WeatherData weatherData;
   final Color color;
 
@@ -15,7 +20,7 @@ class LocationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
-        Text('${this.weatherData.name.toUpperCase()}',
+        Text('${this.weatherData.name.toUpperCase()}' ?? '',
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w300,
@@ -26,7 +31,7 @@ class LocationView extends StatelessWidget {
           children: [
             Icon(Icons.location_on, color: color, size: 15),
             SizedBox(width: 10),
-            Text(this.weatherData.coordinates.lat.toString(),
+            Text(this.weatherData.coordinates.lat.toString() ?? '',
                 style: TextStyle(
                   fontSize: 16,
                   color: color,
@@ -36,7 +41,7 @@ class LocationView extends StatelessWidget {
                   fontSize: 16,
                   color: color,
                 )),
-            Text(this.weatherData.coordinates.lon.toString(),
+            Text(this.weatherData.coordinates.lon.toString() ?? '',
                 style: TextStyle(
                   fontSize: 16,
                   color: color,

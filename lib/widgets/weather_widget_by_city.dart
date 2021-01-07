@@ -7,6 +7,11 @@ import 'package:open_weather/widgets/modules/weather_description_view_widget.dar
 import 'package:open_weather/widgets/modules/weather_summary_widget.dart';
 
 class OpenWeatherByCity extends StatefulWidget {
+  /// Built in widget to support easy integration.
+  /// The widget lists some weather data based on the [cityName]
+  /// With the help of [weatherUnits] you specify the type of unit.
+  /// Please note, in order to use the widget a valid [apiKey] is required.
+  /// For more info, read the documentation.
   @required
   final String apiKey;
   @required
@@ -17,7 +22,7 @@ class OpenWeatherByCity extends StatefulWidget {
       {this.apiKey,
       this.cityName,
       this.weatherUnits = WeatherUnits.IMPERIAL,
-      this.color});
+      this.color = Colors.black});
   @override
   _OpenWeatherByCityState createState() => _OpenWeatherByCityState();
 }
