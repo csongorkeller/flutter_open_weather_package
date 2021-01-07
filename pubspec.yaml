@@ -1,5 +1,5 @@
 name: open_weather
-description: A new Flutter package project.
+description: Unofficial OpenWeather package.
 version: 0.0.1
 author: 'Csongor Keller'
 homepage:
@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.2
+  cached_network_image: ^2.5.0
 
 dev_dependencies:
   flutter_test:

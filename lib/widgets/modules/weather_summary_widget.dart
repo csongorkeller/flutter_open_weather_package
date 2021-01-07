@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:open_weather/models/weather_data.dart';
 
@@ -33,9 +34,29 @@ class WeatherSummary extends StatelessWidget {
           ],
         ),
         Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: Image.network(
-                'http://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png'))
+          padding: const EdgeInsets.only(top: 5),
+          child: CachedNetworkImage(
+            imageUrl:
+                'http://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
+            /* placeholder: (context, url) => CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(color),
+            ), */
+            errorWidget: (context, url, error) => Column(
+              children: [
+                Icon(
+                  Icons.error,
+                  color: color,
+                ),
+                Text(
+                  'Error loading icon',
+                  style: TextStyle(
+                    color: color,
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
       ]),
     );
   }

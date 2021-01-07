@@ -81,7 +81,10 @@ class _OpenWeatherByLocationState extends State<OpenWeatherByLocation> {
             style: TextStyle(color: widget.color),
           ));
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(
+            child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(widget.color),
+        ));
       },
     );
   }
