@@ -11,16 +11,16 @@ class PrebuiltFunctionScreen extends StatefulWidget {
 class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   OpenWeather openWeather;
 
-  //final String _cityName = 'Florida';
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
-  Future<WeatherData> _weatherData;
   final double _latitude = 40.0292888;
   final double _longitude = -105.3100169;
+  Future<WeatherData> _weatherData;
+
+  //final String _cityName = 'Florida';
 
   @override
   void initState() {
     super.initState();
-
     openWeather = OpenWeather(apiKey: _key);
     _getCurrentweatherByLocation();
   }
@@ -33,12 +33,10 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   // }
 
   Future<WeatherData> _getCurrentweatherByLocation() async {
-    _weatherData = openWeather
-        .currentWeatherByLocation(
-            latitude: _latitude,
-            longitude: _longitude,
-            weatherUnits: WeatherUnits.METRIC)
-        .catchError((err) => print(err));
+    _weatherData = openWeather.currentWeatherByLocation(
+        latitude: _latitude,
+        longitude: _longitude,
+        weatherUnits: WeatherUnits.METRIC);
 
     return _weatherData;
   }

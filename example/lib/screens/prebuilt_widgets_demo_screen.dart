@@ -8,8 +8,6 @@ class PrebuiltWidgetsScreen extends StatefulWidget {
 }
 
 class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
-  OpenWeather openWeather;
-
   final String _cityName = 'Miami';
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
   final double _latitude = 52.3545828;

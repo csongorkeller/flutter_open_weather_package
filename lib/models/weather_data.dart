@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:open_weather/models/coordinates.dart';
 import 'package:open_weather/models/details.dart';
