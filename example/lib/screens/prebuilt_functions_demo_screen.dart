@@ -11,38 +11,37 @@ class PrebuiltFunctionScreen extends StatefulWidget {
 class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   OpenWeather openWeather;
 
-  final String _cityName = 'Florida';
+  //final String _cityName = 'Florida';
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
   Future<WeatherData> _weatherData;
-
-  // final double _latitude = 52.3545828;
-  // final double _longitude = 4.7638781;
+  final double _latitude = 40.0292888;
+  final double _longitude = -105.3100169;
 
   @override
   void initState() {
     super.initState();
 
     openWeather = OpenWeather(apiKey: _key);
-    getCurrentweatherByCity().catchError((err) => print(err));
+    _getCurrentweatherByLocation();
   }
 
-  Future<WeatherData> getCurrentweatherByCity() async {
-    _weatherData = openWeather.currentWeatherByCityName(
-        cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
-
-    return _weatherData;
-  }
-
-  //  Future<WeatherData> getCurrentweatherByLocation() async {
-  //   WeatherData _weatherData = await openWeather
-  //       .currentWeatherByLocation(
-  //           latitude: _latitude,
-  //           longitude: _longitude,
-  //           weatherUnits: WeatherUnits.METRIC)
-  //       .catchError((err) => print(err));
+  // Future<WeatherData> getCurrentweatherByCity() async {
+  //   _weatherData = openWeather.currentWeatherByCityName(
+  //       cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
 
   //   return _weatherData;
   // }
+
+  Future<WeatherData> _getCurrentweatherByLocation() async {
+    _weatherData = openWeather
+        .currentWeatherByLocation(
+            latitude: _latitude,
+            longitude: _longitude,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err));
+
+    return _weatherData;
+  }
 
   Widget _buildButton() {
     return RaisedButton(

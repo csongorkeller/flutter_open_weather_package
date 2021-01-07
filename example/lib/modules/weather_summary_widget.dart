@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class WeatherSummary extends StatelessWidget {
@@ -58,7 +59,14 @@ class WeatherSummary extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Image.network(imageUrl),
+          // Image.network(imageUrl),
+          CachedNetworkImage(
+            imageUrl: imageUrl,
+            errorWidget: (context, url, error) => Icon(
+              Icons.error,
+              color: color,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text('${currentTemperature.toUpperCase()}°' ?? '',
