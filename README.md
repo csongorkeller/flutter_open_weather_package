@@ -62,31 +62,31 @@ In order to access the fetched weather values, you can go through each classes h
 
 The `Coordinates` class holds the following info:
 
-- lat (latitude of the current place retrieved from the API)
-- lon (latitude of the current place retrieved from the API)
+- lat (City geo location, latitude, retrieved from the API)
+- lon (City geo location, longitude, retrieved from the API)
 
 The `Details` class holds the following info:\
 `Important! Details class retrieves a List, so you have to loop through it to access it's values.`
 
-- id (default ID coming from the API)
-- weatherShortDescription (short description of the current weather conditions coming from the API)
-- weatherLongDescription (long description of the current weather conditions coming from the API)
-- icon (holds the icon name used by [OpenWeatherMAP API](https://openweathermap.org/weather-conditions))
+- id (Weather condition id coming from the API)
+- weatherShortDescription (Group of weather parameters (Rain, Snow, Extreme etc.) coming from the API)
+- weatherLongDescription (Weather condition within the group coming from the API)
+- icon (holds the icon id used by [OpenWeatherMAP API](https://openweathermap.org/weather-conditions))
 
 The `Temperature` class holds the following info:
 
-- currentTemperature (current temperature coming from the API)
-- feelsLike (feels like value coming from the API)
-- tempMin (minimum temperature value coming from the API)
-- tempMax (maximum temperature value coming from the API)
-- pressure (air pressure value coming from the API)
-- humidity (air humidity value coming from the API)
+- currentTemperature (Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)
+- feelsLike (Temperature. This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)
+- tempMin (Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)
+- tempMax (Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)
+- pressure (Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa, coming from the API)
+- humidity (Humidity, %, coming from the API)
 
 The `Wind` class holds the following info:
 
-- speed (wind speed value coming from the API)
-- deg (wind degree value coming from the API)
-- gust (wind gust value coming from the API)
+- speed (Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. coming from the API)
+- deg (Wind direction, degrees (meteorological). coming from the API)
+- gust (Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. coming from the API)
 
 To access them you can do the following:
 
