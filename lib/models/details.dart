@@ -3,6 +3,12 @@ import 'package:json_annotation/json_annotation.dart';
 part 'details.g.dart';
 
 @JsonSerializable()
+
+/// Details class holds the basic details related info from the API response
+/// [id] holds the weather condition ID
+/// [weatherShortDescription] Group of weather parameters (Rain, Snow, Extreme etc.)
+/// [weatherLongDescription] Weather condition within the group
+/// [icon] Weather icon id
 class Details {
   int id;
   @JsonKey(name: 'main')

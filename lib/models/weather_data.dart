@@ -7,6 +7,13 @@ import 'package:open_weather/models/wind.dart';
 part 'weather_data.g.dart';
 
 @JsonSerializable()
+
+/// Generic class to hold all the data being extracted from the API response
+/// [details] holds weather basic details as a list
+/// [wind] holds wind related details as an object
+/// [temperature] holds temperature related details as an object
+/// [coordinates] holds coordinates of the place
+/// [name] is used to extract the name of the identified place from the API response
 class WeatherData {
   @JsonKey(name: 'weather')
   List<Details> details;

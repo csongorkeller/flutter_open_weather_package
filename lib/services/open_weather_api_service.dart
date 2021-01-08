@@ -9,8 +9,13 @@ import 'package:open_weather/utils/constants.dart';
 class OpenWeather {
   OpenWeather({@required this.apiKey});
 
+  /// [apiKey] is used to authenticate the user with OpenWeather API.
+  /// without proper API key, the other functions throws Exception.
   final String apiKey;
 
+  /// Retrieves the WeatherData object by the current city name
+  /// In order to use the function, [cityName] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByCityName(
       {@required String cityName,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
@@ -24,6 +29,9 @@ class OpenWeather {
     }
   }
 
+  /// Retrieves the WeatherData object by the current location
+  /// In order to use the function, [latitude] and [longitude] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByLocation(
       {@required double latitude,
       @required double longitude,
@@ -38,6 +46,12 @@ class OpenWeather {
     }
   }
 
+  /// General request handler
+  /// [tag] is being used to specify some options in order to make it robust
+  /// [lat] is for latitude
+  /// [lon] is for longitude
+  /// [cityName] is for cityName
+  /// [weatherUnits] is for setting the weather unit.
   Future<Map<String, dynamic>> _sendRequest(
     final String tag, {
     final double lat,
@@ -57,6 +71,12 @@ class OpenWeather {
     }
   }
 
+  /// GFunction to set up the request URL with the specified parameters
+  /// [tag] is being used to specify some options in order to make it robust
+  /// [lat] is for latitude
+  /// [lon] is for longitude
+  /// [cityName] is for cityName
+  /// [weatherUnits] is for setting the weather unit.
   String _buildUrl(
     final String tag,
     final String cityName,
