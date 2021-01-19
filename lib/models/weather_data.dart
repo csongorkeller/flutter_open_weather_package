@@ -23,6 +23,8 @@ class WeatherData {
   @JsonKey(name: 'coord')
   Coordinates coordinates;
   String name;
+  @JsonKey(name: 'dt')
+  int date;
 
   WeatherData({
     this.details,

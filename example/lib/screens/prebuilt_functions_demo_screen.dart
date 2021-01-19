@@ -1,6 +1,7 @@
 import 'package:example/modules/location_view_widget.dart';
 import 'package:example/modules/weather_summary_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:open_weather/models/weather_forecast_data.dart';
 import 'package:open_weather/open_weather.dart';
 
 class PrebuiltFunctionScreen extends StatefulWidget {
@@ -11,37 +12,45 @@ class PrebuiltFunctionScreen extends StatefulWidget {
 class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   OpenWeather openWeather;
 
+  final String _cityName = 'Florida';
+  final String _countryCode = 'NL';
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
   final double _latitude = 40.0292888;
   final double _longitude = -105.3100169;
   final int _zipCode = 3512;
-  final String _countryCode = 'NL';
-  Future<WeatherData> _weatherData;
 
-  //final String _cityName = 'Florida';
+  Future<WeatherData> _weatherData;
+  Future<WeatherForecastData> _weatherForecastData;
 
   @override
   void initState() {
     super.initState();
     openWeather = OpenWeather(apiKey: _key);
     _getCurrentweatherByZipCode();
+
+    // _getFiveDaysForecastByCityName().then((value) {
+    //   value.forecastData.forEach((element) {
+    //     print(element.temperature.currentTemperature);
+    //     print(element.date.toString());
+    //   });
+    // });
   }
 
-  // Future<WeatherData> getCurrentweatherByCity() async {
-  //   _weatherData = openWeather.currentWeatherByCityName(
-  //       cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
+  Future<WeatherData> _getCurrentweatherByCity() async {
+    _weatherData = openWeather.currentWeatherByCityName(
+        cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
 
-  //   return _weatherData;
-  // }
+    return _weatherData;
+  }
 
-  // Future<WeatherData> _getCurrentweatherByLocation() async {
-  //   _weatherData = openWeather.currentWeatherByLocation(
-  //       latitude: _latitude,
-  //       longitude: _longitude,
-  //       weatherUnits: WeatherUnits.METRIC);
+  Future<WeatherData> _getCurrentweatherByLocation() async {
+    _weatherData = openWeather.currentWeatherByLocation(
+        latitude: _latitude,
+        longitude: _longitude,
+        weatherUnits: WeatherUnits.METRIC);
 
-  //   return _weatherData;
-  // }
+    return _weatherData;
+  }
 
   Future<WeatherData> _getCurrentweatherByZipCode() async {
     _weatherData = openWeather.currentWeatherByZipCode(
@@ -50,6 +59,31 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
         weatherUnits: WeatherUnits.METRIC);
 
     return _weatherData;
+  }
+
+  Future<WeatherForecastData> _getFiveDaysForecastByCityName() async {
+    _weatherForecastData = openWeather.fiveDaysWeatherForecastByCityName(
+        cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
+
+    return _weatherForecastData;
+  }
+
+  Future<WeatherForecastData> _getFiveDaysForecastByLocation() async {
+    _weatherForecastData = openWeather.fiveDaysWeatherForecastByLocation(
+        latitude: _latitude,
+        longitude: _longitude,
+        weatherUnits: WeatherUnits.METRIC);
+
+    return _weatherForecastData;
+  }
+
+  Future<WeatherForecastData> _getFiveDaysForecastByZipCode() async {
+    _weatherForecastData = openWeather.fiveDaysWeatherForecastByZipCode(
+        zipCode: _zipCode,
+        countryCode: _countryCode,
+        weatherUnits: WeatherUnits.METRIC);
+
+    return _weatherForecastData;
   }
 
   Widget _buildButton() {

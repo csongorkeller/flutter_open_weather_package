@@ -1,7 +1,8 @@
 # open_weather
 
 Unofficial Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap.org/) easily.
-The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude) and ZipCode (zipCode and countryCode).
+The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude) and by ZIP Code (zipCode and countryCode).
+The plugin also supports 5 days weather forecast by city name, geolocation and by ZIP code
 
 The plugin also supports multiple unit types:  
 To receive all data in Fahrenheit, use `WeatherUnits.STANDARD`\
@@ -14,7 +15,7 @@ To install the dependency, add `open_weather` to your `pubspec.yaml`.
 
 ## Usage
 
-### Prebuilt functions
+### Prebuilt functions for current weather
 
 Before you can use the plugin, you need an API key from [OpenWeatherMAP](https://openweathermap.org/). The plugin only uses those endpoints that can be acquired for free.
 
@@ -116,7 +117,7 @@ WeatherData weatherData = await openWeather
     });
 ```
 
-### Prebuilt widgets
+### Prebuilt widgets for current weather
 
 Alternativel you can use the built in widgets to populate your app with some nice UI showing weather insights:
 
@@ -155,6 +156,40 @@ OpenWeatherByZipCode(
                 color: Colors.white,
               )
 
+```
+
+### Prebuilt functions for 5 days weather forecast
+`Important! Forecast retrieves a List, so you have to loop through it to access it's values.`
+
+For fetching through city name, you can do the following:
+
+```dart
+  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByCityName(
+            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err));
+```
+
+For fetching through geolocation, you can do the following:
+
+```dart
+  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByLocation(
+            latitude: _latitude,
+            longitude: _longitude,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err));
+```
+
+For fetching through ZIP Code, you can do the following:
+
+```dart
+  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByZipCode(
+            zipCode: _zipCode,
+            countryCode: _countryCode,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err));
 ```
 
 For more info and demo implementation check the `example` folder.

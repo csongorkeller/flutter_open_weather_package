@@ -31,7 +31,7 @@ WeatherData _$WeatherDataFromJson(Map json) {
             (k, e) => MapEntry(k as String, e),
           )),
     name: json['name'] as String,
-  );
+  )..date = json['dt'] as int;
 }
 
 Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
@@ -41,4 +41,5 @@ Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
       'main': instance.temperature?.toJson(),
       'coord': instance.coordinates?.toJson(),
       'name': instance.name,
+      'dt': instance.date,
     };

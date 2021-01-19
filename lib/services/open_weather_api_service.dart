@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:open_weather/enums/weather_units.dart';
 import 'package:open_weather/models/weather_data.dart';
+import 'package:open_weather/models/weather_forecast_data.dart';
 import 'package:open_weather/utils/constants.dart';
 
 class OpenWeather {
@@ -60,6 +61,58 @@ class OpenWeather {
           weatherUnits: weatherUnits);
 
       return WeatherData.fromJson(_currentWeather);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  /// Retrieves the weatherForecastData object by the current city name
+  /// In order to use the function, [cityName] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
+  Future<WeatherForecastData> fiveDaysWeatherForecastByCityName(
+      {@required String cityName,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+    try {
+      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+          cityName: cityName, weatherUnits: weatherUnits);
+
+      return WeatherForecastData.fromJson(_currentWeather);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  /// Retrieves the WeatherForecastData object by the current location
+  /// In order to use the function, [latitude] and [longitude] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
+  Future<WeatherForecastData> fiveDaysWeatherForecastByLocation(
+      {@required double latitude,
+      @required double longitude,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+    try {
+      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+          lat: latitude, lon: longitude, weatherUnits: weatherUnits);
+
+      return WeatherForecastData.fromJson(_currentWeather);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  /// Retrieves the WeatherData object by ZipCode and Country code
+  /// In order to use the function, [zipCode] and [countryCode] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
+  Future<WeatherForecastData> fiveDaysWeatherForecastByZipCode(
+      {@required int zipCode,
+      @required String countryCode,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+    try {
+      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+          zipCode: zipCode,
+          countryCode: countryCode,
+          weatherUnits: weatherUnits);
+
+      return WeatherForecastData.fromJson(_currentWeather);
     } catch (err) {
       rethrow;
     }
