@@ -1,6 +1,6 @@
 # open_weather
 
-Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap.org/) easily.
+Unofficial Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap.org/) easily.
 The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude).
 
 The plugin also supports multiple unit types:  
