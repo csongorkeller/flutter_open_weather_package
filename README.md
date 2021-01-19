@@ -64,8 +64,8 @@ For fetching through ZIP Code, you can do the following:
 ```dart
   WeatherData weatherData = await openWeather
         .currentWeatherByZipCode(
-            zipCode: _zipCode_,
-            countryCode: _countryCode_,
+            zipCode: _zipCode,
+            countryCode: _countryCode,
             weatherUnits: WeatherUnits.METRIC)
         .catchError((err) => print(err));
 ```
@@ -149,8 +149,8 @@ For fetching through ZIP Code, you can do the following:
 ```dart
 OpenWeatherByZipCode(
                 apiKey: _key,
-                zipCode: _zipCode_,
-                countryCode: _countryCode_,
+                zipCode: _zipCode,
+                countryCode: _countryCode,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
               )
