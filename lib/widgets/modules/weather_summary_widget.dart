@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:open_weather/models/weather_data.dart';
+import 'package:open_weather_client/models/weather_data.dart';
 
 class WeatherSummary extends StatelessWidget {
   /// Built in widget to support easy integration.

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:open_weather/open_weather.dart';
+import 'package:open_weather_client/open_weather.dart';
 
 void main() {
   group('Open Weather unit tests', () {

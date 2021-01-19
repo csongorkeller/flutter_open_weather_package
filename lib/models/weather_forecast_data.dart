@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:open_weather/open_weather.dart';
+import 'package:open_weather_client/open_weather.dart';
 
 part 'weather_forecast_data.g.dart';
 

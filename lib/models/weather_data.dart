@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:open_weather/models/coordinates.dart';
-import 'package:open_weather/models/details.dart';
-import 'package:open_weather/models/temperature.dart';
-import 'package:open_weather/models/wind.dart';
+import 'package:open_weather_client/models/coordinates.dart';
+import 'package:open_weather_client/models/details.dart';
+import 'package:open_weather_client/models/temperature.dart';
+import 'package:open_weather_client/models/wind.dart';
 
 part 'weather_data.g.dart';
 

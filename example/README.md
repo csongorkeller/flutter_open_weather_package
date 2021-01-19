@@ -1,6 +1,6 @@
 # open_weather_example
 
-Demonstrates how to use the open_weather plugin.
+Demonstrates how to use the open_weather_client plugin.
 
 ## Getting Started
 

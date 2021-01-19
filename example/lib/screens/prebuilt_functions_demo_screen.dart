@@ -1,8 +1,8 @@
 import 'package:example/modules/location_view_widget.dart';
 import 'package:example/modules/weather_summary_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:open_weather/models/weather_forecast_data.dart';
-import 'package:open_weather/open_weather.dart';
+import 'package:open_weather_client/models/weather_forecast_data.dart';
+import 'package:open_weather_client/open_weather.dart';
 
 class PrebuiltFunctionScreen extends StatefulWidget {
   @override

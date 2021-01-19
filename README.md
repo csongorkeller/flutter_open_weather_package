@@ -1,4 +1,4 @@
-# open_weather
+# open_weather_client
 
 Unofficial Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap.org/) easily.
 The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude) and by ZIP Code (zipCode and countryCode).
@@ -11,7 +11,7 @@ For Kelvin use `WeatherUnits.IMPERIAL`
 
 ## Install package
 
-To install the dependency, add `open_weather` to your `pubspec.yaml`.
+To install the dependency, add `open_weather_client` to your `pubspec.yaml`.
 
 ## Usage
 
@@ -22,7 +22,7 @@ Before you can use the plugin, you need an API key from [OpenWeatherMAP](https:/
 Once you have the API key, do the following:
 
 ```dart
-import 'package:open_weather/open_weather.dart';
+import 'package:open_weather_client/open_weather_client.dart';
 
 ...
 

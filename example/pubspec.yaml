@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  open_weather:
+  open_weather_client:
     path: ../
   intl: ^0.16.1
   cached_network_image: ^2.5.0

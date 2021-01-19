@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:open_weather/enums/weather_units.dart';
-import 'package:open_weather/open_weather.dart';
-import 'package:open_weather/services/open_weather_api_service.dart';
-import 'package:open_weather/widgets/modules/location_view_widget.dart';
-import 'package:open_weather/widgets/modules/weather_description_view_widget.dart';
-import 'package:open_weather/widgets/modules/weather_summary_widget.dart';
+import 'package:open_weather_client/enums/weather_units.dart';
+import 'package:open_weather_client/open_weather.dart';
+import 'package:open_weather_client/services/open_weather_api_service.dart';
+import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
+import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
+import 'package:open_weather_client/widgets/modules/weather_summary_widget.dart';
 
 class OpenWeatherByLocation extends StatefulWidget {
   /// Built in widget to support easy integration.

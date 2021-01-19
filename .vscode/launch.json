@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "open_weather",
+            "name": "open_weather_client",
             "request": "launch",
             "type": "dart"
         },

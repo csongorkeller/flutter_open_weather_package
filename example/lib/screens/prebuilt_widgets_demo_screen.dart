@@ -1,6 +1,6 @@
 import 'package:example/screens/prebuilt_functions_demo_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:open_weather/open_weather.dart';
+import 'package:open_weather_client/open_weather.dart';
 
 class PrebuiltWidgetsScreen extends StatefulWidget {
   @override

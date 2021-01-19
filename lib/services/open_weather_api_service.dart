@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:open_weather/enums/weather_units.dart';
-import 'package:open_weather/models/weather_data.dart';
-import 'package:open_weather/models/weather_forecast_data.dart';
-import 'package:open_weather/utils/constants.dart';
+import 'package:open_weather_client/enums/weather_units.dart';
+import 'package:open_weather_client/models/weather_data.dart';
+import 'package:open_weather_client/models/weather_forecast_data.dart';
+import 'package:open_weather_client/utils/constants.dart';
 
 class OpenWeather {
   OpenWeather({@required this.apiKey});

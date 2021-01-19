@@ -1,4 +1,4 @@
-library open_weather;
+library open_weather_client;
 
 export './models/weather_data.dart';
 export './models/weather_forecast_data.dart';
