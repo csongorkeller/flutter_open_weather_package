@@ -14,6 +14,8 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   final String _key = 'c4bbb94f9fcfede0eb5219111804b040';
   final double _latitude = 40.0292888;
   final double _longitude = -105.3100169;
+  final int _zipCode = 3512;
+  final String _countryCode = 'NL';
   Future<WeatherData> _weatherData;
 
   //final String _cityName = 'Florida';
@@ -22,7 +24,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   void initState() {
     super.initState();
     openWeather = OpenWeather(apiKey: _key);
-    _getCurrentweatherByLocation();
+    _getCurrentweatherByZipCode();
   }
 
   // Future<WeatherData> getCurrentweatherByCity() async {
@@ -32,10 +34,19 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   //   return _weatherData;
   // }
 
-  Future<WeatherData> _getCurrentweatherByLocation() async {
-    _weatherData = openWeather.currentWeatherByLocation(
-        latitude: _latitude,
-        longitude: _longitude,
+  // Future<WeatherData> _getCurrentweatherByLocation() async {
+  //   _weatherData = openWeather.currentWeatherByLocation(
+  //       latitude: _latitude,
+  //       longitude: _longitude,
+  //       weatherUnits: WeatherUnits.METRIC);
+
+  //   return _weatherData;
+  // }
+
+  Future<WeatherData> _getCurrentweatherByZipCode() async {
+    _weatherData = openWeather.currentWeatherByZipCode(
+        zipCode: _zipCode,
+        countryCode: _countryCode,
         weatherUnits: WeatherUnits.METRIC);
 
     return _weatherData;

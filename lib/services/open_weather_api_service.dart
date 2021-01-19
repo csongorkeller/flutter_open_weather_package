@@ -46,6 +46,25 @@ class OpenWeather {
     }
   }
 
+  /// Retrieves the WeatherData object by ZipCode and Country code
+  /// In order to use the function, [zipCode] and [countryCode] is required
+  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
+  Future<WeatherData> currentWeatherByZipCode(
+      {@required int zipCode,
+      @required String countryCode,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+    try {
+      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+          zipCode: zipCode,
+          countryCode: countryCode,
+          weatherUnits: weatherUnits);
+
+      return WeatherData.fromJson(_currentWeather);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
   /// General request handler
   /// [tag] is being used to specify some options in order to make it robust
   /// [lat] is for latitude
@@ -57,9 +76,12 @@ class OpenWeather {
     final double lat,
     final double lon,
     final String cityName,
+    final int zipCode,
+    final String countryCode,
     final WeatherUnits weatherUnits,
   }) async {
-    String url = _buildUrl(tag, cityName, lat, lon, weatherUnits);
+    String url =
+        _buildUrl(tag, cityName, lat, lon, zipCode, countryCode, weatherUnits);
 
     http.Response response = await http.get(url);
 
@@ -82,6 +104,8 @@ class OpenWeather {
     final String cityName,
     final double lat,
     final double lon,
+    final int zipCode,
+    final String countryCode,
     final WeatherUnits weatherUnits,
   ) {
     String url = AppStrings.API_BASE_URL +
@@ -89,8 +113,10 @@ class OpenWeather {
 
     if (cityName != null) {
       url += '&q=$cityName&';
-    } else {
+    } else if (lat != null && lon != null) {
       url += '&lat=$lat&lon=$lon&';
+    } else if (zipCode != null && countryCode != null) {
+      url += '&zip=$zipCode,$countryCode&';
     }
 
     url += 'appid=$apiKey&';

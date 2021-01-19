@@ -1,7 +1,7 @@
 # open_weather
 
 Unofficial Dart package in order to make use of [OpenWeatherMAP API](https://openweathermap.org/) easily.
-The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude).
+The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude) and ZipCode (zipCode and countryCode).
 
 The plugin also supports multiple unit types:  
 To receive all data in Fahrenheit, use `WeatherUnits.STANDARD`\
@@ -25,7 +25,7 @@ import 'package:open_weather/open_weather.dart';
 
 ...
 
-OpenWeather openWeather =  OpenWeather(apiKey: "YOUR_API_KEY");
+OpenWeather openWeather =  OpenWeather(apiKey: 'YOUR_API_KEY');
 ```
 
 The current weather is fetched through the city name or geolocation.
@@ -35,6 +35,8 @@ The current weather is fetched through the city name or geolocation.
   final String _cityName = 'Florida';
   final double _latitude = 52.3545828;
   final double _longitude = 4.7638781;
+  final int _zipCode = 3512;
+  final String _countryCode = 'NL';
 ```
 
 For fetching through city name, you can do the following:
@@ -53,6 +55,17 @@ For fetching through geolocation, you can do the following:
         .currentWeatherByLocation(
             latitude: _latitude,
             longitude: _longitude,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) => print(err));
+```
+
+For fetching through ZIP Code, you can do the following:
+
+```dart
+  WeatherData weatherData = await openWeather
+        .currentWeatherByZipCode(
+            zipCode: _zipCode_,
+            countryCode: _countryCode_,
             weatherUnits: WeatherUnits.METRIC)
         .catchError((err) => print(err));
 ```
@@ -125,6 +138,19 @@ OpenWeatherByLocation(
                 apiKey: _key,
                 latitude: _latitude,
                 longitude: _longitude,
+                weatherUnits: WeatherUnits.METRIC,
+                color: Colors.white,
+              )
+
+```
+
+For fetching through ZIP Code, you can do the following:
+
+```dart
+OpenWeatherByZipCode(
+                apiKey: _key,
+                zipCode: _zipCode_,
+                countryCode: _countryCode_,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
               )
