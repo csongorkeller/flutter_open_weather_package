@@ -22,7 +22,7 @@ Before you can use the plugin, you need an API key from [OpenWeatherMAP](https:/
 Once you have the API key, do the following:
 
 ```dart
-import 'package:open_weather_client/open_weather_client.dart';
+import 'package:open_weather_client/open_weather.dart';
 
 ...
 
