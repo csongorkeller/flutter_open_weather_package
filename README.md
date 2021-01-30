@@ -9,6 +9,10 @@ To receive all data in Fahrenheit, use `WeatherUnits.STANDARD`\
 For Celsius, use `WeatherUnits.METRIC`\
 For Kelvin use `WeatherUnits.IMPERIAL`
 
+## Demo
+
+![Example at work](demo.gif)
+
 ## Install package
 
 To install the dependency, add `open_weather_client` to your `pubspec.yaml`.
