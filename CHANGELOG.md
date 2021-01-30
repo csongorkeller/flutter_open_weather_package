@@ -7,3 +7,7 @@ Easy-to integrate widgets and exported functions are also part of the package.
 ## [1.0.1] - 20/01/2021.
 
 * Readme Update
+
+## [1.0.2] - 30/01/2021.
+
+* Added demo gif and images updated to HTTPS to prevent errors
