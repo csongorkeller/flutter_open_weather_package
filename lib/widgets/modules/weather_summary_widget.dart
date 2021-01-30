@@ -44,7 +44,7 @@ class WeatherSummary extends StatelessWidget {
           padding: const EdgeInsets.only(top: 5),
           child: CachedNetworkImage(
             imageUrl:
-                'http://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
+                'https://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
             /* placeholder: (context, url) => CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(color),
             ), */

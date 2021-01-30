@@ -124,7 +124,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
                       WeatherSummary(
                         color: Colors.black,
                         imageUrl:
-                            'http://openweathermap.org/img/wn/${snapshot.data.details.first.icon}@2x.png',
+                            'https://openweathermap.org/img/wn/${snapshot.data.details.first.icon}@2x.png',
                         currentTemperature: snapshot
                             .data.temperature.currentTemperature
                             .toString(),
