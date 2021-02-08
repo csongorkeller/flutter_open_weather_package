@@ -36,6 +36,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     // });
   }
 
+  // ignore: unused_element
   Future<WeatherData> _getCurrentweatherByCity() async {
     _weatherData = openWeather.currentWeatherByCityName(
         cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
@@ -43,6 +44,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     return _weatherData;
   }
 
+  // ignore: unused_element
   Future<WeatherData> _getCurrentweatherByLocation() async {
     _weatherData = openWeather.currentWeatherByLocation(
         latitude: _latitude,
@@ -61,6 +63,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     return _weatherData;
   }
 
+  // ignore: unused_element
   Future<WeatherForecastData> _getFiveDaysForecastByCityName() async {
     _weatherForecastData = openWeather.fiveDaysWeatherForecastByCityName(
         cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
@@ -68,6 +71,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     return _weatherForecastData;
   }
 
+  // ignore: unused_element
   Future<WeatherForecastData> _getFiveDaysForecastByLocation() async {
     _weatherForecastData = openWeather.fiveDaysWeatherForecastByLocation(
         latitude: _latitude,
@@ -77,6 +81,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     return _weatherForecastData;
   }
 
+  // ignore: unused_element
   Future<WeatherForecastData> _getFiveDaysForecastByZipCode() async {
     _weatherForecastData = openWeather.fiveDaysWeatherForecastByZipCode(
         zipCode: _zipCode,
