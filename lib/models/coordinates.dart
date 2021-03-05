@@ -3,11 +3,10 @@ import 'package:json_annotation/json_annotation.dart';
 part 'coordinates.g.dart';
 
 @JsonSerializable()
-
-/// Details class holds the coordinates related info from the API response
-/// [lon] City geo location, longitude
-/// [lat] City geo location, latitude
 class Coordinates {
+  /// Details class holds the coordinates related info from the API response
+  /// [lon] City geo location, longitude
+  /// [lat] City geo location, latitude
   double lon;
   double lat;
 
