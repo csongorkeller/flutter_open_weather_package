@@ -15,3 +15,8 @@ Easy-to integrate widgets and exported functions are also part of the package.
 ## [1.0.3] - 08/02/2021.
 
 * Fixes in dependencies
+
+## [1.0.4] - 05/03/2021.
+
+* Removed cached-network-image from dependencies in order to support web
+* Other fixes
