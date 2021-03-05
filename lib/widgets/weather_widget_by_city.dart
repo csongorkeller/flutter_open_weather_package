@@ -45,6 +45,7 @@ class _OpenWeatherByCityState extends State<OpenWeatherByCity> {
             cityName: widget.cityName, weatherUnits: widget.weatherUnits)
         .catchError((err) {
       print(err);
+      // ignore: return_of_invalid_type_from_catch_error
       return err;
     });
 

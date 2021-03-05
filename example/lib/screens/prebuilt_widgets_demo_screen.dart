@@ -14,7 +14,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
   final double _longitude = 4.7638781;
 
   Widget _buildButton() {
-    return RaisedButton(
+    return ElevatedButton(
       child: Text('Check with prebuilt functions'),
       onPressed: () => Navigator.push(
           context,

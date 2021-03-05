@@ -92,7 +92,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
   }
 
   Widget _buildButton() {
-    return RaisedButton(
+    return ElevatedButton(
       child: Text('Check with prebuilt widgets'),
       onPressed: () => Navigator.of(context).pop(),
     );

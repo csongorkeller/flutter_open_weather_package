@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:open_weather_client/models/weather_data.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class WeatherSummary extends StatelessWidget {
   /// Built in widget to support easy integration.
@@ -41,29 +41,51 @@ class WeatherSummary extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: CachedNetworkImage(
-            imageUrl:
-                'https://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
-            /* placeholder: (context, url) => CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(color),
-            ), */
-            errorWidget: (context, url, error) => Column(
-              children: [
-                Icon(
-                  Icons.error,
-                  color: color,
-                ),
-                Text(
-                  'Error loading icon',
-                  style: TextStyle(
-                    color: color,
-                  ),
-                )
-              ],
-            ),
-          ),
-        )
+            padding: const EdgeInsets.only(top: 5),
+            // child: CachedNetworkImage(
+            //   imageUrl:
+            //       'https://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
+            //   /* placeholder: (context, url) => CircularProgressIndicator(
+            //     valueColor: AlwaysStoppedAnimation<Color>(color),
+            //   ), */
+            //   errorWidget: (context, url, error) => Column(
+            //     children: [
+            //       Icon(
+            //         Icons.error,
+            //         color: color,
+            //       ),
+            //       Text(
+            //         'Error loading icon',
+            //         style: TextStyle(
+            //           color: color,
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
+            child: Center(
+              child: FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image:
+                    'https://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
+                imageErrorBuilder: (context, error, stackTrace) {
+                  return Column(
+                    children: [
+                      Icon(
+                        Icons.error,
+                        color: color,
+                      ),
+                      Text(
+                        'Error loading icon',
+                        style: TextStyle(
+                          color: color,
+                        ),
+                      )
+                    ],
+                  ); //do something
+                },
+              ),
+            ))
       ]),
     );
   }

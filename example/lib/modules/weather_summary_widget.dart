@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class WeatherSummary extends StatelessWidget {
   WeatherSummary({
@@ -59,13 +59,25 @@ class WeatherSummary extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          // Image.network(imageUrl),
-          CachedNetworkImage(
-            imageUrl: imageUrl,
-            errorWidget: (context, url, error) => Icon(
-              Icons.error,
-              color: color,
-            ),
+          FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: imageUrl,
+            imageErrorBuilder: (context, error, stackTrace) {
+              return Column(
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: color,
+                  ),
+                  Text(
+                    'Error loading icon',
+                    style: TextStyle(
+                      color: color,
+                    ),
+                  )
+                ],
+              );
+            },
           ),
           Padding(
             padding: EdgeInsets.only(top: 10),

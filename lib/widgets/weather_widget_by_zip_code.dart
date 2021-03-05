@@ -50,6 +50,7 @@ class _OpenWeatherByZipCodeState extends State<OpenWeatherByZipCode> {
             weatherUnits: WeatherUnits.METRIC)
         .catchError((err) {
       print(err);
+      // ignore: return_of_invalid_type_from_catch_error
       return err;
     });
 
