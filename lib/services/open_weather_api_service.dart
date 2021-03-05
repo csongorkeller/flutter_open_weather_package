@@ -14,10 +14,11 @@ class OpenWeather {
   /// without proper API key, the other functions throws Exception.
   final String apiKey;
 
-  /// Retrieves the WeatherData object by the current city name
-  /// In order to use the function, [cityName] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByCityName(
+
+      /// Retrieves the WeatherData object by the current city name
+      /// In order to use the function, [cityName] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required String cityName,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
@@ -30,10 +31,11 @@ class OpenWeather {
     }
   }
 
-  /// Retrieves the WeatherData object by the current location
-  /// In order to use the function, [latitude] and [longitude] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByLocation(
+
+      /// Retrieves the WeatherData object by the current location
+      /// In order to use the function, [latitude] and [longitude] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required double latitude,
       @required double longitude,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
@@ -47,10 +49,11 @@ class OpenWeather {
     }
   }
 
-  /// Retrieves the WeatherData object by ZipCode and Country code
-  /// In order to use the function, [zipCode] and [countryCode] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByZipCode(
+
+      /// Retrieves the WeatherData object by ZipCode and Country code
+      /// In order to use the function, [zipCode] and [countryCode] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required int zipCode,
       @required String countryCode,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
@@ -66,10 +69,11 @@ class OpenWeather {
     }
   }
 
-  /// Retrieves the weatherForecastData object by the current city name
-  /// In order to use the function, [cityName] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherForecastData> fiveDaysWeatherForecastByCityName(
+
+      /// Retrieves the weatherForecastData object by the current city name
+      /// In order to use the function, [cityName] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required String cityName,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
@@ -82,10 +86,11 @@ class OpenWeather {
     }
   }
 
-  /// Retrieves the WeatherForecastData object by the current location
-  /// In order to use the function, [latitude] and [longitude] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherForecastData> fiveDaysWeatherForecastByLocation(
+
+      /// Retrieves the WeatherForecastData object by the current location
+      /// In order to use the function, [latitude] and [longitude] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required double latitude,
       @required double longitude,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
@@ -99,10 +104,11 @@ class OpenWeather {
     }
   }
 
-  /// Retrieves the WeatherData object by ZipCode and Country code
-  /// In order to use the function, [zipCode] and [countryCode] is required
-  /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherForecastData> fiveDaysWeatherForecastByZipCode(
+
+      /// Retrieves the WeatherData object by ZipCode and Country code
+      /// In order to use the function, [zipCode] and [countryCode] is required
+      /// It is possible to set the weather units by setting a specific value in [weatherUnits]
       {@required int zipCode,
       @required String countryCode,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
@@ -118,13 +124,13 @@ class OpenWeather {
     }
   }
 
-  /// General request handler
-  /// [tag] is being used to specify some options in order to make it robust
-  /// [lat] is for latitude
-  /// [lon] is for longitude
-  /// [cityName] is for cityName
-  /// [weatherUnits] is for setting the weather unit.
   Future<Map<String, dynamic>> _sendRequest(
+    /// General request handler
+    /// [tag] is being used to specify some options in order to make it robust
+    /// [lat] is for latitude
+    /// [lon] is for longitude
+    /// [cityName] is for cityName
+    /// [weatherUnits] is for setting the weather unit.
     final String tag, {
     final double lat,
     final double lon,
@@ -136,7 +142,7 @@ class OpenWeather {
     String url =
         _buildUrl(tag, cityName, lat, lon, zipCode, countryCode, weatherUnits);
 
-    http.Response response = await http.get(url);
+    http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       Map<String, dynamic> jsonBody = json.decode(response.body);
@@ -146,13 +152,13 @@ class OpenWeather {
     }
   }
 
-  /// GFunction to set up the request URL with the specified parameters
-  /// [tag] is being used to specify some options in order to make it robust
-  /// [lat] is for latitude
-  /// [lon] is for longitude
-  /// [cityName] is for cityName
-  /// [weatherUnits] is for setting the weather unit.
   String _buildUrl(
+    /// Function to set up the request URL with the specified parameters
+    /// [tag] is being used to specify some options in order to make it robust
+    /// [lat] is for latitude
+    /// [lon] is for longitude
+    /// [cityName] is for cityName
+    /// [weatherUnits] is for setting the weather unit.
     final String tag,
     final String cityName,
     final double lat,
