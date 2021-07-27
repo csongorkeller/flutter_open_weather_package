@@ -20,3 +20,7 @@ Easy-to integrate widgets and exported functions are also part of the package.
 
 * Removed cached-network-image from dependencies in order to support web
 * Other fixes
+
+## [1.0.5] - 27/07/2021.
+
+* Updated dependencies
