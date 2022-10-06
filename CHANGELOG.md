@@ -24,3 +24,8 @@ Easy-to integrate widgets and exported functions are also part of the package.
 ## [1.0.5] - 27/07/2021.
 
 * Updated dependencies
+
+## [2.0.0] - 06/10/2022.
+
+* Updated package to support Null-Safety
+* Updated package to support flutter 3.x.x
