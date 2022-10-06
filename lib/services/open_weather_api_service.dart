@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:open_weather_client/enums/weather_units.dart';
 import 'package:open_weather_client/models/weather_data.dart';
 import 'package:open_weather_client/models/weather_forecast_data.dart';
-import 'package:open_weather_client/utils/constants.dart';
+
+const kApiBaseURL = 'https://api.openweathermap.org/data/2.5/';
 
 class OpenWeather {
-  OpenWeather({@required this.apiKey});
+  OpenWeather({required this.apiKey});
 
   /// [apiKey] is used to authenticate the user with OpenWeather API.
   /// without proper API key, the other functions throws Exception.
@@ -19,13 +19,12 @@ class OpenWeather {
       /// Retrieves the WeatherData object by the current city name
       /// In order to use the function, [cityName] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required String cityName,
+      {required String cityName,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+      Map<String, dynamic> currentWeather = await _sendRequest('weather',
           cityName: cityName, weatherUnits: weatherUnits);
-
-      return WeatherData.fromJson(_currentWeather);
+      return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -36,14 +35,13 @@ class OpenWeather {
       /// Retrieves the WeatherData object by the current location
       /// In order to use the function, [latitude] and [longitude] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required double latitude,
-      @required double longitude,
+      {required double latitude,
+      required double longitude,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+      Map<String, dynamic> currentWeather = await _sendRequest('weather',
           lat: latitude, lon: longitude, weatherUnits: weatherUnits);
-
-      return WeatherData.fromJson(_currentWeather);
+      return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -54,16 +52,15 @@ class OpenWeather {
       /// Retrieves the WeatherData object by ZipCode and Country code
       /// In order to use the function, [zipCode] and [countryCode] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required int zipCode,
-      @required String countryCode,
+      {required int zipCode,
+      required String countryCode,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('weather',
+      Map<String, dynamic> currentWeather = await _sendRequest('weather',
           zipCode: zipCode,
           countryCode: countryCode,
           weatherUnits: weatherUnits);
-
-      return WeatherData.fromJson(_currentWeather);
+      return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -74,13 +71,13 @@ class OpenWeather {
       /// Retrieves the weatherForecastData object by the current city name
       /// In order to use the function, [cityName] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required String cityName,
+      {required String cityName,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+      Map<String, dynamic> currentWeather = await _sendRequest('forecast',
           cityName: cityName, weatherUnits: weatherUnits);
 
-      return WeatherForecastData.fromJson(_currentWeather);
+      return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -91,14 +88,14 @@ class OpenWeather {
       /// Retrieves the WeatherForecastData object by the current location
       /// In order to use the function, [latitude] and [longitude] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required double latitude,
-      @required double longitude,
+      {required double latitude,
+      required double longitude,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+      Map<String, dynamic> currentWeather = await _sendRequest('forecast',
           lat: latitude, lon: longitude, weatherUnits: weatherUnits);
 
-      return WeatherForecastData.fromJson(_currentWeather);
+      return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -109,16 +106,16 @@ class OpenWeather {
       /// Retrieves the WeatherData object by ZipCode and Country code
       /// In order to use the function, [zipCode] and [countryCode] is required
       /// It is possible to set the weather units by setting a specific value in [weatherUnits]
-      {@required int zipCode,
-      @required String countryCode,
+      {required int zipCode,
+      required String countryCode,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> _currentWeather = await _sendRequest('forecast',
+      Map<String, dynamic> currentWeather = await _sendRequest('forecast',
           zipCode: zipCode,
           countryCode: countryCode,
           weatherUnits: weatherUnits);
 
-      return WeatherForecastData.fromJson(_currentWeather);
+      return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
     }
@@ -132,15 +129,21 @@ class OpenWeather {
     /// [cityName] is for cityName
     /// [weatherUnits] is for setting the weather unit.
     final String tag, {
-    final double lat,
-    final double lon,
-    final String cityName,
-    final int zipCode,
-    final String countryCode,
-    final WeatherUnits weatherUnits,
+    final double? lat,
+    final double? lon,
+    final String? cityName,
+    final int? zipCode,
+    final String? countryCode,
+    final WeatherUnits? weatherUnits,
   }) async {
-    String url =
-        _buildUrl(tag, cityName, lat, lon, zipCode, countryCode, weatherUnits);
+    String url = _buildUrl(
+        tag: tag,
+        cityName: cityName,
+        lat: lat,
+        lon: lon,
+        zipCode: zipCode,
+        countryCode: countryCode,
+        weatherUnits: weatherUnits ?? WeatherUnits.STANDARD);
 
     http.Response response = await http.get(Uri.parse(url));
 
@@ -152,23 +155,22 @@ class OpenWeather {
     }
   }
 
-  String _buildUrl(
+  String _buildUrl({
     /// Function to set up the request URL with the specified parameters
     /// [tag] is being used to specify some options in order to make it robust
     /// [lat] is for latitude
     /// [lon] is for longitude
     /// [cityName] is for cityName
     /// [weatherUnits] is for setting the weather unit.
-    final String tag,
-    final String cityName,
-    final double lat,
-    final double lon,
-    final int zipCode,
-    final String countryCode,
-    final WeatherUnits weatherUnits,
-  ) {
-    String url = AppStrings.API_BASE_URL +
-        '$tag?units=${weatherUnitsString[weatherUnits]}';
+    required final String tag,
+    final String? cityName,
+    final double? lat,
+    final double? lon,
+    final int? zipCode,
+    final String? countryCode,
+    required final WeatherUnits weatherUnits,
+  }) {
+    String url = '$kApiBaseURL$tag?units=${weatherUnitsString[weatherUnits]}';
 
     if (cityName != null) {
       url += '&q=$cityName&';

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:open_weather_client/models/weather_data.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -9,10 +11,9 @@ class WeatherSummary extends StatelessWidget {
   /// Please note, in order to use the widget [weatherData] should not be null.
   /// For more info, read the documentation.
   final WeatherData weatherData;
-  final Color color;
+  final Color? color;
 
-  WeatherSummary({Key key, @required this.weatherData, this.color})
-      : super(key: key);
+  const WeatherSummary({super.key, required this.weatherData, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,7 @@ class WeatherSummary extends StatelessWidget {
         Column(
           children: [
             Text(
-              '${_formatTemperature(this.weatherData.temperature.currentTemperature)}°' ??
-                  '',
+              '${_formatTemperature(weatherData.temperature.currentTemperature)}°',
               style: TextStyle(
                 fontSize: 50,
                 color: color,
@@ -30,8 +30,7 @@ class WeatherSummary extends StatelessWidget {
               ),
             ),
             Text(
-              'Feels like ${_formatTemperature(this.weatherData.temperature.feelsLike)}°' ??
-                  '',
+              'Feels like ${_formatTemperature(weatherData.temperature.feelsLike)}°',
               style: TextStyle(
                 fontSize: 18,
                 color: color,
@@ -67,7 +66,7 @@ class WeatherSummary extends StatelessWidget {
               child: FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
                 image:
-                    'https://openweathermap.org/img/wn/${this.weatherData.details.first.icon}@2x.png',
+                    'https://openweathermap.org/img/wn/${weatherData.details.first.icon}@2x.png',
                 imageErrorBuilder: (context, error, stackTrace) {
                   return Column(
                     children: [
@@ -90,8 +89,8 @@ class WeatherSummary extends StatelessWidget {
     );
   }
 
-  String _formatTemperature(double t) {
-    var temp = (t == null ? '' : t.round().toString());
-    return temp;
+  String _formatTemperature(double value, [int places = 1]) {
+    double mod = pow(10.0, places).toDouble();
+    return ((value * mod).round().toDouble() / mod).toString();
   }
 }

@@ -6,20 +6,15 @@ part of 'weather_forecast_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WeatherForecastData _$WeatherForecastDataFromJson(Map json) {
-  return WeatherForecastData(
-    forecastData: (json['list'] as List)
-        ?.map((e) => e == null
-            ? null
-            : WeatherData.fromJson((e as Map)?.map(
-                (k, e) => MapEntry(k as String, e),
-              )))
-        ?.toList(),
-  );
-}
+WeatherForecastData _$WeatherForecastDataFromJson(Map json) =>
+    WeatherForecastData(
+      forecastData: (json['list'] as List<dynamic>)
+          .map((e) => WeatherData.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
+    );
 
 Map<String, dynamic> _$WeatherForecastDataToJson(
         WeatherForecastData instance) =>
     <String, dynamic>{
-      'list': instance.forecastData?.map((e) => e?.toJson())?.toList(),
+      'list': instance.forecastData.map((e) => e.toJson()).toList(),
     };

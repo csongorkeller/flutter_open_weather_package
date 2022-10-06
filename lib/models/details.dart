@@ -17,10 +17,10 @@ class Details {
   String icon;
 
   Details(
-      {this.id,
-      this.weatherShortDescription,
-      this.weatherLongDescription,
-      this.icon});
+      {required this.id,
+      required this.weatherShortDescription,
+      required this.weatherLongDescription,
+      required this.icon});
 
   factory Details.fromJson(Map<String, dynamic> json) =>
       _$DetailsFromJson(json);

@@ -4,21 +4,22 @@ version: 1.0.5
 homepage: 'https://github.com/csongorkeller/flutter_open_weather_package'
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.18.0 <3.3.3"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.3
+  http: ^0.13.5
   transparent_image: ^2.0.0
-  json_annotation: ^4.0.1
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: any
   json_serializable: any
+  flutter_lints: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

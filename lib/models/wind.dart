@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'wind.g.dart';
@@ -11,12 +10,12 @@ class Wind {
   /// [gust] represents Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
   double speed;
   double deg;
-  double gust;
+  double? gust;
 
   Wind({
-    @required this.speed,
-    @required this.deg,
-    @required this.gust,
+    required this.speed,
+    required this.deg,
+    this.gust,
   });
 
   factory Wind.fromJson(Map<String, dynamic> json) => _$WindFromJson(json);

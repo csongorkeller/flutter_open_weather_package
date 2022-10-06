@@ -23,12 +23,12 @@ class Temperature {
   int humidity;
 
   Temperature({
-    this.currentTemperature,
-    this.feelsLike,
-    this.tempMin,
-    this.tempMax,
-    this.pressure,
-    this.humidity,
+    required this.currentTemperature,
+    required this.feelsLike,
+    required this.tempMin,
+    required this.tempMax,
+    required this.pressure,
+    required this.humidity,
   });
 
   factory Temperature.fromJson(Map<String, dynamic> json) =>

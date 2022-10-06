@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:open_weather_client/enums/weather_units.dart';
 import 'package:open_weather_client/open_weather.dart';
-import 'package:open_weather_client/services/open_weather_api_service.dart';
 import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_summary_widget.dart';
@@ -12,75 +10,61 @@ class OpenWeatherByZipCode extends StatefulWidget {
   /// With the help of [weatherUnits] you specify the type of unit.
   /// Please note, in order to use the widget a valid [apiKey] is required.
   /// For more info, read the documentation.
-  @required
   final String apiKey;
-  @required
   final int zipCode;
-  @required
   final String countryCode;
   final WeatherUnits weatherUnits;
   final Color color;
-  OpenWeatherByZipCode(
-      {this.apiKey,
-      this.zipCode,
-      this.countryCode,
+  const OpenWeatherByZipCode(
+      {super.key,
+      required this.apiKey,
+      required this.zipCode,
+      required this.countryCode,
       this.weatherUnits = WeatherUnits.IMPERIAL,
       this.color = Colors.black});
   @override
-  _OpenWeatherByZipCodeState createState() => _OpenWeatherByZipCodeState();
+  State<OpenWeatherByZipCode> createState() => _OpenWeatherByZipCodeState();
 }
 
 class _OpenWeatherByZipCodeState extends State<OpenWeatherByZipCode> {
-  OpenWeather openWeather;
-
-  Future<WeatherData> _weatherData;
+  late OpenWeather openWeather;
 
   @override
   void initState() {
     super.initState();
     openWeather = OpenWeather(apiKey: widget.apiKey);
-    _getCurrentWeatherByZipCode();
   }
 
   Future<WeatherData> _getCurrentWeatherByZipCode() async {
-    _weatherData = openWeather
-        .currentWeatherByZipCode(
-            zipCode: widget.zipCode,
-            countryCode: widget.countryCode,
-            weatherUnits: WeatherUnits.METRIC)
-        .catchError((err) {
-      print(err);
-      // ignore: return_of_invalid_type_from_catch_error
-      return err;
-    });
-
-    return _weatherData;
+    return openWeather.currentWeatherByZipCode(
+        zipCode: widget.zipCode,
+        countryCode: widget.countryCode,
+        weatherUnits: WeatherUnits.METRIC);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _weatherData,
+      future: _getCurrentWeatherByZipCode(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Container(
-              child: Column(
+          return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               LocationView(
-                weatherData: snapshot.data,
+                weatherData: snapshot.data!,
                 color: widget.color,
               ),
               WeatherSummary(
-                weatherData: snapshot.data,
+                weatherData: snapshot.data!,
                 color: widget.color,
               ),
               WeatherDescriptionView(
-                weatherData: snapshot.data,
+                weatherData: snapshot.data!,
                 color: widget.color,
               ),
             ],
-          ));
+          );
         } else if (snapshot.hasError) {
           return Center(
               child: Text(

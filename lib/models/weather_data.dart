@@ -26,11 +26,12 @@ class WeatherData {
   int date;
 
   WeatherData({
-    this.details,
-    this.temperature,
-    this.wind,
-    this.coordinates,
-    this.name,
+    required this.details,
+    required this.temperature,
+    required this.wind,
+    required this.coordinates,
+    required this.name,
+    required this.date,
   });
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =>

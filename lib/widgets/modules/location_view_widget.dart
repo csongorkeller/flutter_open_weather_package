@@ -8,19 +8,19 @@ class LocationView extends StatelessWidget {
   /// Please note, in order to use the widget [weatherData] should not be null.
   /// For more info, read the documentation.
   final WeatherData weatherData;
-  final Color color;
+  final Color? color;
 
-  LocationView({
-    Key key,
-    @required this.weatherData,
+  const LocationView({
+    super.key,
+    required this.weatherData,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
-        Text('${this.weatherData.name.toUpperCase()}' ?? '',
+        Text(weatherData.name.toUpperCase(),
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w300,
@@ -30,8 +30,8 @@ class LocationView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.location_on, color: color, size: 15),
-            SizedBox(width: 10),
-            Text(this.weatherData.coordinates.lat.toString() ?? '',
+            const SizedBox(width: 10),
+            Text(weatherData.coordinates.lat.toString(),
                 style: TextStyle(
                   fontSize: 16,
                   color: color,
@@ -41,7 +41,7 @@ class LocationView extends StatelessWidget {
                   fontSize: 16,
                   color: color,
                 )),
-            Text(this.weatherData.coordinates.lon.toString() ?? '',
+            Text(weatherData.coordinates.lon.toString(),
                 style: TextStyle(
                   fontSize: 16,
                   color: color,

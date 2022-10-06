@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:open_weather_client/open_weather.dart';
 
 class PrebuiltWidgetsScreen extends StatefulWidget {
+  const PrebuiltWidgetsScreen({super.key});
+
   @override
-  _PrebuiltWidgetsScreenState createState() => _PrebuiltWidgetsScreenState();
+  State<PrebuiltWidgetsScreen> createState() => _PrebuiltWidgetsScreenState();
 }
 
 class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
@@ -15,11 +17,12 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
 
   Widget _buildButton() {
     return ElevatedButton(
-      child: Text('Check with prebuilt functions'),
+      child: const Text('Check with prebuilt functions'),
       onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) => PrebuiltFunctionScreen())),
+              builder: (BuildContext context) =>
+                  const PrebuiltFunctionScreen())),
     );
   }
 
@@ -29,7 +32,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           elevation: 0,
-          title: Text(
+          title: const Text(
             'OpenWeather prebuilt widgets',
             style: TextStyle(color: Colors.white),
           ),
@@ -45,7 +48,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
               ),
-              Divider(
+              const Divider(
                 thickness: 1,
                 color: Colors.white,
               ),

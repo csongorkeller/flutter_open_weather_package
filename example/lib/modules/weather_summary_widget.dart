@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class WeatherSummary extends StatelessWidget {
-  WeatherSummary({
-    this.imageUrl,
-    this.currentTemperature,
-    this.color,
-    this.maxTemperature,
-    this.minTemperature,
-    this.humidity,
-    this.pressure,
+  const WeatherSummary({
+    super.key,
+    required this.imageUrl,
+    required this.currentTemperature,
+    required this.color,
+    required this.maxTemperature,
+    required this.minTemperature,
+    required this.humidity,
+    required this.pressure,
   });
 
   final Color color;
@@ -20,11 +21,14 @@ class WeatherSummary extends StatelessWidget {
   final String minTemperature;
   final String pressure;
 
-  Widget _buildMinMaxRow({IconData icon, String temperature}) {
+  Widget _buildMinMaxRow({
+    required IconData icon,
+    required String temperature,
+  }) {
     return Row(
       children: [
         Icon(icon),
-        Text('$temperature°' ?? '',
+        Text('$temperature°',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w300,
@@ -34,17 +38,20 @@ class WeatherSummary extends StatelessWidget {
     );
   }
 
-  Widget _buildHumidutyAndPressureRow({String humidity, String pressure}) {
+  Widget _buildHumidutyAndPressureRow({
+    required String humidity,
+    required String pressure,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text('$pressure hPa' ?? '',
+        Text('$pressure hPa',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w300,
               color: color,
             )),
-        Text('$humidity %' ?? '',
+        Text('$humidity %',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w300,
@@ -56,63 +63,61 @@ class WeatherSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: imageUrl,
-            imageErrorBuilder: (context, error, stackTrace) {
-              return Column(
-                children: [
-                  Icon(
-                    Icons.error,
+    return Column(
+      children: [
+        FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: imageUrl,
+          imageErrorBuilder: (context, error, stackTrace) {
+            return Column(
+              children: [
+                Icon(
+                  Icons.error,
+                  color: color,
+                ),
+                Text(
+                  'Error loading icon',
+                  style: TextStyle(
                     color: color,
                   ),
-                  Text(
-                    'Error loading icon',
-                    style: TextStyle(
-                      color: color,
-                    ),
-                  )
-                ],
-              );
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Text('${currentTemperature.toUpperCase()}°' ?? '',
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.w300,
-                  color: color,
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: _buildMinMaxRow(
-                      icon: Icons.arrow_drop_up_sharp,
-                      temperature: maxTemperature),
-                ),
-                Container(
-                  child: _buildMinMaxRow(
-                      icon: Icons.arrow_drop_down_sharp,
-                      temperature: minTemperature),
-                ),
+                )
               ],
-            ),
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Text('${currentTemperature.toUpperCase()}°',
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.w300,
+                color: color,
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                child: _buildMinMaxRow(
+                    icon: Icons.arrow_drop_up_sharp,
+                    temperature: maxTemperature),
+              ),
+              Container(
+                child: _buildMinMaxRow(
+                    icon: Icons.arrow_drop_down_sharp,
+                    temperature: minTemperature),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: _buildHumidutyAndPressureRow(
-                humidity: humidity, pressure: pressure),
-          )
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: _buildHumidutyAndPressureRow(
+              humidity: humidity, pressure: pressure),
+        )
+      ],
     );
   }
 }

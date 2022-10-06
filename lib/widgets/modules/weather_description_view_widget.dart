@@ -8,29 +8,22 @@ class WeatherDescriptionView extends StatelessWidget {
   /// Please note, in order to use the widget [weatherData] should not be null.
   /// For more info, read the documentation.
   final WeatherData weatherData;
-  final Color color;
+  final Color? color;
 
-  WeatherDescriptionView({Key key, @required this.weatherData, this.color})
-      : assert(weatherData != null),
-        super(key: key);
+  const WeatherDescriptionView(
+      {super.key, required this.weatherData, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-          this
-                  .weatherData
-                  .details
-                  .first
-                  .weatherShortDescription
-                  .toUpperCase() ??
-              '',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w300,
-            color: color,
-          )),
+      child:
+          Text(weatherData.details.first.weatherShortDescription.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w300,
+                color: color,
+              )),
     );
   }
 }
