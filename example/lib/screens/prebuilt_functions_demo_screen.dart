@@ -108,7 +108,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       LocationViewWidget(
-                        title: snapshot.data!.name,
+                        title: snapshot.data!.name ?? '',
                         color: Colors.black,
                       ),
                       WeatherSummary(

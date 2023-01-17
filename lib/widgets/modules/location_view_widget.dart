@@ -20,7 +20,7 @@ class LocationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
-        Text(weatherData.name.toUpperCase(),
+        Text(weatherData.name?.toUpperCase() ?? '',
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w300,
