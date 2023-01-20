@@ -29,3 +29,7 @@ Easy-to integrate widgets and exported functions are also part of the package.
 
 * Updated package to support Null-Safety
 * Updated package to support flutter 3.x.x
+
+## [2.1.0] - 20/01/2023.
+
+* Fixed issues with forecasted weather data
