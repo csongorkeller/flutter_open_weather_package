@@ -20,8 +20,8 @@ class WeatherData {
   @JsonKey(name: 'main')
   Temperature temperature;
   @JsonKey(name: 'coord')
-  Coordinates coordinates;
-  String name;
+  Coordinates? coordinates;
+  String? name;
   @JsonKey(name: 'dt')
   int date;
 
