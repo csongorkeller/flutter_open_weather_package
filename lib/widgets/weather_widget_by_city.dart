@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_weather_client/enums/languages.dart';
 import 'package:open_weather_client/open_weather.dart';
 import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
@@ -14,12 +15,16 @@ class OpenWeatherByCity extends StatefulWidget {
   final String cityName;
   final WeatherUnits weatherUnits;
   final Color color;
+  final Languages language;
+
   const OpenWeatherByCity(
       {super.key,
       required this.apiKey,
       required this.cityName,
       this.weatherUnits = WeatherUnits.IMPERIAL,
-      this.color = Colors.black});
+      this.color = Colors.black,
+      this.language = Languages.ENGLISH});
+
   @override
   State<OpenWeatherByCity> createState() => _OpenWeatherByCityState();
 }
@@ -33,16 +38,18 @@ class _OpenWeatherByCityState extends State<OpenWeatherByCity> {
     openWeather = OpenWeather(apiKey: widget.apiKey);
   }
 
-  Future<WeatherData> getCurrentweatherByCity() async {
+  Future<WeatherData> _getCurrentWeatherByCity() async {
     WeatherData wd = await openWeather.currentWeatherByCityName(
-        cityName: widget.cityName, weatherUnits: widget.weatherUnits);
+        cityName: widget.cityName,
+        weatherUnits: widget.weatherUnits,
+        language: widget.language);
     return wd;
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getCurrentweatherByCity(),
+      future: _getCurrentWeatherByCity(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Column(

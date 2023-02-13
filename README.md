@@ -9,6 +9,11 @@ To receive all data in Fahrenheit, use `WeatherUnits.STANDARD`\
 For Celsius, use `WeatherUnits.METRIC`\
 For Kelvin use `WeatherUnits.IMPERIAL`
 
+The plugin also supports different languages:  
+To receive all data in GERMAN, use  `Languages.GERMAN`
+
+The default language is `Languages.ENGLISH`
+
 ## Demo
 
 ![Example at work](demo.gif)
@@ -42,6 +47,7 @@ The current weather is fetched through the city name or geolocation.
   final double _longitude = 4.7638781;
   final int _zipCode = 3512;
   final String _countryCode = 'NL';
+  final Languages _language = Languages.ENGLISH;
 ```
 
 For fetching through city name, you can do the following:
@@ -133,6 +139,7 @@ For fetching through city name, you can do the following:
                 cityName: _cityName,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
+                language: Languages.ENGLISH
               )
 ```
 
@@ -145,6 +152,7 @@ OpenWeatherByLocation(
                 longitude: _longitude,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
+                language: Languages.ENGLISH
               )
 
 ```
@@ -158,6 +166,7 @@ OpenWeatherByZipCode(
                 countryCode: _countryCode,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
+                language: Languages.ENGLISH
               )
 
 ```
@@ -170,7 +179,9 @@ For fetching through city name, you can do the following:
 ```dart
   WeatherForecastData weatherData = await openWeather
         .fiveDaysWeatherForecastByCityName(
-            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
+            cityName: _cityName,
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
         .catchError((err) => print(err));
 ```
 
@@ -181,7 +192,8 @@ For fetching through geolocation, you can do the following:
         .fiveDaysWeatherForecastByLocation(
             latitude: _latitude,
             longitude: _longitude,
-            weatherUnits: WeatherUnits.METRIC)
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
         .catchError((err) => print(err));
 ```
 
@@ -192,7 +204,8 @@ For fetching through ZIP Code, you can do the following:
         .fiveDaysWeatherForecastByZipCode(
             zipCode: _zipCode,
             countryCode: _countryCode,
-            weatherUnits: WeatherUnits.METRIC)
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
         .catchError((err) => print(err));
 ```
 

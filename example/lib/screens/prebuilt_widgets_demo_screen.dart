@@ -1,5 +1,6 @@
 import 'package:example/screens/prebuilt_functions_demo_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:open_weather_client/enums/languages.dart';
 import 'package:open_weather_client/open_weather.dart';
 
 class PrebuiltWidgetsScreen extends StatefulWidget {
@@ -47,6 +48,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
                 cityName: _cityName,
                 weatherUnits: WeatherUnits.METRIC,
                 color: Colors.white,
+                language: Languages.GERMAN
               ),
               const Divider(
                 thickness: 1,
@@ -57,6 +59,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
                 latitude: _latitude,
                 longitude: _longitude,
                 weatherUnits: WeatherUnits.METRIC,
+                language: Languages.ENGLISH,
                 color: Colors.white,
               ),
               _buildButton()
