@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_weather_client/enums/languages.dart';
 import 'package:open_weather_client/open_weather.dart';
 import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
@@ -15,13 +16,17 @@ class OpenWeatherByLocation extends StatefulWidget {
   final double longitude;
   final WeatherUnits weatherUnits;
   final Color color;
+  final Languages language;
+
   const OpenWeatherByLocation(
       {super.key,
       required this.apiKey,
       required this.latitude,
       required this.longitude,
       this.weatherUnits = WeatherUnits.IMPERIAL,
-      this.color = Colors.black});
+      this.color = Colors.black,
+      this.language = Languages.ENGLISH});
+
   @override
   State<OpenWeatherByLocation> createState() => _OpenWeatherByLocationState();
 }
@@ -35,17 +40,18 @@ class _OpenWeatherByLocationState extends State<OpenWeatherByLocation> {
     openWeather = OpenWeather(apiKey: widget.apiKey);
   }
 
-  Future<WeatherData> _getCurrentweatherByLocation() async {
+  Future<WeatherData> _getCurrentWeatherByLocation() async {
     return openWeather.currentWeatherByLocation(
         latitude: widget.latitude,
         longitude: widget.longitude,
-        weatherUnits: WeatherUnits.METRIC);
+        weatherUnits: widget.weatherUnits,
+        language: widget.language);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _getCurrentweatherByLocation(),
+      future: _getCurrentWeatherByLocation(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Column(

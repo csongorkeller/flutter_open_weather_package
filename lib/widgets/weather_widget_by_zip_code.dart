@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_weather_client/enums/languages.dart';
 import 'package:open_weather_client/open_weather.dart';
 import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
@@ -15,13 +16,17 @@ class OpenWeatherByZipCode extends StatefulWidget {
   final String countryCode;
   final WeatherUnits weatherUnits;
   final Color color;
+  final Languages language;
+
   const OpenWeatherByZipCode(
       {super.key,
       required this.apiKey,
       required this.zipCode,
       required this.countryCode,
       this.weatherUnits = WeatherUnits.IMPERIAL,
-      this.color = Colors.black});
+      this.color = Colors.black,
+      this.language = Languages.ENGLISH});
+
   @override
   State<OpenWeatherByZipCode> createState() => _OpenWeatherByZipCodeState();
 }
@@ -39,7 +44,8 @@ class _OpenWeatherByZipCodeState extends State<OpenWeatherByZipCode> {
     return openWeather.currentWeatherByZipCode(
         zipCode: widget.zipCode,
         countryCode: widget.countryCode,
-        weatherUnits: WeatherUnits.METRIC);
+        weatherUnits: widget.weatherUnits,
+        language: widget.language);
   }
 
   @override
