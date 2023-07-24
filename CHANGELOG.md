@@ -34,6 +34,10 @@ Easy-to integrate widgets and exported functions are also part of the package.
 
 * Fixed issues with forecasted weather data
 
-## [2.1.1] - .
+## [2.2.0] - 01/03/2023
 
 * Added language support for weather data
+
+## [2.3.0] - 24/07/2023
+
+* Dependency versions updated to support future compatibility

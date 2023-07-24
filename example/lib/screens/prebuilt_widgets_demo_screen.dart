@@ -44,12 +44,11 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               OpenWeatherByCity(
-                apiKey: _key,
-                cityName: _cityName,
-                weatherUnits: WeatherUnits.METRIC,
-                color: Colors.white,
-                language: Languages.GERMAN
-              ),
+                  apiKey: _key,
+                  cityName: _cityName,
+                  weatherUnits: WeatherUnits.METRIC,
+                  color: Colors.white,
+                  language: Languages.GERMAN),
               const Divider(
                 thickness: 1,
                 color: Colors.white,
@@ -59,7 +58,7 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
                 latitude: _latitude,
                 longitude: _longitude,
                 weatherUnits: WeatherUnits.METRIC,
-                language: Languages.ENGLISH,
+                language: Languages.GERMAN,
                 color: Colors.white,
               ),
               _buildButton()
