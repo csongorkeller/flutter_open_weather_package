@@ -48,7 +48,6 @@ enum Languages {
   ZULU,
 }
 
-
 Map<Languages, String> languageCodeString = {
   Languages.AFRIKAANS: 'af',
   Languages.ALBANIAN: 'al',
