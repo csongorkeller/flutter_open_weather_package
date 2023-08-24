@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 7.0.0-dev">
+  <meta name="description" content="open_weather_client API docs, for the Dart programming language.">
+  <title>open_weather_client - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/csongorkeller/flutter_open_weather_package">open_weather_client package</a></li>
+  </ol>
+  <div class="self-name">open_weather_client</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="open_weather_client">open_weather_client</h1>
+<p>Unofficial Dart package in order to make use of <a href="https://openweathermap.org/">OpenWeatherMAP API</a> easily.
+The plugin can currently be used to fetch weather data by city name or geolocation(latitude, longitude) and by ZIP Code (zipCode and countryCode).
+The plugin also supports 5 days weather forecast by city name, geolocation and by ZIP code</p>
+<p>The plugin also supports multiple unit types:<br>
+To receive all data in Fahrenheit, use <code>WeatherUnits.STANDARD</code><br>
+For Celsius, use <code>WeatherUnits.METRIC</code><br>
+For Kelvin use <code>WeatherUnits.IMPERIAL</code></p>
+<p>The plugin also supports different languages:<br>
+To receive all data in GERMAN, use  <code>Languages.GERMAN</code></p>
+<p>The default language is <code>Languages.ENGLISH</code></p>
+<h2 id="demo">Demo</h2>
+<p><img src="demo.gif" alt="Example at work"></p>
+<h2 id="install-package">Install package</h2>
+<p>To install the dependency, add <code>open_weather_client</code> to your <code>pubspec.yaml</code>.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="prebuilt-functions-for-current-weather">Prebuilt functions for current weather</h3>
+<p>Before you can use the plugin, you need an API key from <a href="https://openweathermap.org/">OpenWeatherMAP</a>. The plugin only uses those endpoints that can be acquired for free.</p>
+<p>Once you have the API key, do the following:</p>
+<pre class="language-dart"><code class="language-dart">import 'package:open_weather_client/open_weather.dart';
+
+...
+
+OpenWeather openWeather =  OpenWeather(apiKey: 'YOUR_API_KEY');
+</code></pre>
+<p>The current weather is fetched through the city name or geolocation.</p>
+<pre class="language-dart"><code class="language-dart">  final String _key = 'YOUR_API_KEY';
+  final String _cityName = 'Florida';
+  final double _latitude = 52.3545828;
+  final double _longitude = 4.7638781;
+  final int _zipCode = 3512;
+  final String _countryCode = 'NL';
+  final Languages _language = Languages.ENGLISH;
+</code></pre>
+<p>For fetching through city name, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherData weatherData = await openWeather
+        .currentWeatherByCityName(
+            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<p>For fetching through geolocation, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherData weatherData = await openWeather
+        .currentWeatherByLocation(
+            latitude: _latitude,
+            longitude: _longitude,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<p>For fetching through ZIP Code, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherData weatherData = await openWeather
+        .currentWeatherByZipCode(
+            zipCode: _zipCode,
+            countryCode: _countryCode,
+            weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<h4 id="accessing-values">Accessing values</h4>
+<p>In order to access the fetched weather values, you can go through each classes holding the specific values.\</p>
+<p>The <code>Coordinates</code> class holds the following info:</p>
+<ul>
+<li>lat (City geo location, latitude, retrieved from the API)</li>
+<li>lon (City geo location, longitude, retrieved from the API)</li>
+</ul>
+<p>The <code>Details</code> class holds the following info:<br>
+<code>Important! Details class retrieves a List, so you have to loop through it to access it's values.</code></p>
+<ul>
+<li>id (Weather condition id coming from the API)</li>
+<li>weatherShortDescription (Group of weather parameters (Rain, Snow, Extreme etc.) coming from the API)</li>
+<li>weatherLongDescription (Weather condition within the group coming from the API)</li>
+<li>icon (holds the icon id used by <a href="https://openweathermap.org/weather-conditions">OpenWeatherMAP API</a>)</li>
+</ul>
+<p>The <code>Temperature</code> class holds the following info:</p>
+<ul>
+<li>currentTemperature (Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)</li>
+<li>feelsLike (Temperature. This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)</li>
+<li>tempMin (Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)</li>
+<li>tempMax (Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. coming from the API)</li>
+<li>pressure (Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa, coming from the API)</li>
+<li>humidity (Humidity, %, coming from the API)</li>
+</ul>
+<p>The <code>Wind</code> class holds the following info:</p>
+<ul>
+<li>speed (Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. coming from the API)</li>
+<li>deg (Wind direction, degrees (meteorological). coming from the API)</li>
+<li>gust (Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. coming from the API)</li>
+</ul>
+<p>To access them you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">WeatherData weatherData = await openWeather
+        .currentWeatherByCityName(
+            cityName: _cityName, weatherUnits: WeatherUnits.METRIC)
+        .catchError((err) =&gt; print(err))
+        .then((data) {
+      print(data.details.first.weatherShortDescription);
+      print(data.name.toString());
+      print(data.temperature.currentTemperature);
+      print(data.wind.speed);
+    });
+</code></pre>
+<h3 id="prebuilt-widgets-for-current-weather">Prebuilt widgets for current weather</h3>
+<p>Alternativel you can use the built in widgets to populate your app with some nice UI showing weather insights:</p>
+<p>For fetching through city name, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart"> OpenWeatherByCity(
+                apiKey: _key,
+                cityName: _cityName,
+                weatherUnits: WeatherUnits.METRIC,
+                color: Colors.white,
+                language: Languages.ENGLISH
+              )
+</code></pre>
+<p>For fetching through geolocation, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">OpenWeatherByLocation(
+                apiKey: _key,
+                latitude: _latitude,
+                longitude: _longitude,
+                weatherUnits: WeatherUnits.METRIC,
+                color: Colors.white,
+                language: Languages.ENGLISH
+              )
+
+</code></pre>
+<p>For fetching through ZIP Code, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">OpenWeatherByZipCode(
+                apiKey: _key,
+                zipCode: _zipCode,
+                countryCode: _countryCode,
+                weatherUnits: WeatherUnits.METRIC,
+                color: Colors.white,
+                language: Languages.ENGLISH
+              )
+
+</code></pre>
+<h3 id="prebuilt-functions-for-5-days-weather-forecast">Prebuilt functions for 5 days weather forecast</h3>
+<p><code>Important! Forecast retrieves a List, so you have to loop through it to access it's values.</code></p>
+<p>For fetching through city name, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByCityName(
+            cityName: _cityName,
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<p>For fetching through geolocation, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByLocation(
+            latitude: _latitude,
+            longitude: _longitude,
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<p>For fetching through ZIP Code, you can do the following:</p>
+<pre class="language-dart"><code class="language-dart">  WeatherForecastData weatherData = await openWeather
+        .fiveDaysWeatherForecastByZipCode(
+            zipCode: _zipCode,
+            countryCode: _countryCode,
+            weatherUnits: WeatherUnits.METRIC,
+            language: Languages.ENGLISH)
+        .catchError((err) =&gt; print(err));
+</code></pre>
+<p>For more info and demo implementation check the <code>example</code> folder.</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="coordinates">
+  <span class="name"><a href="models_coordinates/models_coordinates-library.html">coordinates</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="details">
+  <span class="name"><a href="models_details/models_details-library.html">details</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="languages">
+  <span class="name"><a href="enums_languages/enums_languages-library.html">languages</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="location_view_widget">
+  <span class="name"><a href="widgets_modules_location_view_widget/widgets_modules_location_view_widget-library.html">location_view_widget</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="open_weather_api_service">
+  <span class="name"><a href="services_open_weather_api_service/services_open_weather_api_service-library.html">open_weather_api_service</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="open_weather_client">
+  <span class="name"><a href="open_weather_client/open_weather_client-library.html">open_weather_client</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="temperature">
+  <span class="name"><a href="models_temperature/models_temperature-library.html">temperature</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_data">
+  <span class="name"><a href="models_weather_data/models_weather_data-library.html">weather_data</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_description_view_widget">
+  <span class="name"><a href="widgets_modules_weather_description_view_widget/widgets_modules_weather_description_view_widget-library.html">weather_description_view_widget</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_forecast_data">
+  <span class="name"><a href="models_weather_forecast_data/models_weather_forecast_data-library.html">weather_forecast_data</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_summary_widget">
+  <span class="name"><a href="widgets_modules_weather_summary_widget/widgets_modules_weather_summary_widget-library.html">weather_summary_widget</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_units">
+  <span class="name"><a href="enums_weather_units/enums_weather_units-library.html">weather_units</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_widget_by_city">
+  <span class="name"><a href="widgets_weather_widget_by_city/widgets_weather_widget_by_city-library.html">weather_widget_by_city</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_widget_by_location">
+  <span class="name"><a href="widgets_weather_widget_by_location/widgets_weather_widget_by_location-library.html">weather_widget_by_location</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_widget_by_zip_code">
+  <span class="name"><a href="widgets_weather_widget_by_zip_code/widgets_weather_widget_by_zip_code-library.html">weather_widget_by_zip_code</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="wind">
+  <span class="name"><a href="models_wind/models_wind-library.html">wind</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="https://github.com/csongorkeller/flutter_open_weather_package">open_weather_client package</a></li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">open_weather_client</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="models_coordinates/models_coordinates-library.html">coordinates</a></li>
+      <li><a href="models_details/models_details-library.html">details</a></li>
+      <li><a href="enums_languages/enums_languages-library.html">languages</a></li>
+      <li><a href="widgets_modules_location_view_widget/widgets_modules_location_view_widget-library.html">location_view_widget</a></li>
+      <li><a href="services_open_weather_api_service/services_open_weather_api_service-library.html">open_weather_api_service</a></li>
+      <li><a href="open_weather_client/open_weather_client-library.html">open_weather_client</a></li>
+      <li><a href="models_temperature/models_temperature-library.html">temperature</a></li>
+      <li><a href="models_weather_data/models_weather_data-library.html">weather_data</a></li>
+      <li><a href="widgets_modules_weather_description_view_widget/widgets_modules_weather_description_view_widget-library.html">weather_description_view_widget</a></li>
+      <li><a href="models_weather_forecast_data/models_weather_forecast_data-library.html">weather_forecast_data</a></li>
+      <li><a href="widgets_modules_weather_summary_widget/widgets_modules_weather_summary_widget-library.html">weather_summary_widget</a></li>
+      <li><a href="enums_weather_units/enums_weather_units-library.html">weather_units</a></li>
+      <li><a href="widgets_weather_widget_by_city/widgets_weather_widget_by_city-library.html">weather_widget_by_city</a></li>
+      <li><a href="widgets_weather_widget_by_location/widgets_weather_widget_by_location-library.html">weather_widget_by_location</a></li>
+      <li><a href="widgets_weather_widget_by_zip_code/widgets_weather_widget_by_zip_code-library.html">weather_widget_by_zip_code</a></li>
+      <li><a href="models_wind/models_wind-library.html">wind</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    open_weather_client
+      2.3.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
