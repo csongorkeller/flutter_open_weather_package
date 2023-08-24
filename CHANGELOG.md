@@ -41,3 +41,8 @@ Easy-to integrate widgets and exported functions are also part of the package.
 ## [2.3.0] - 24/07/2023
 
 * Dependency versions updated to support future compatibility
+
+## [2.3.1] - 24/08/2023
+
+* Language ENUM file updated to match Dart formatter. 
+* Dartdoc documentation included in the project files
