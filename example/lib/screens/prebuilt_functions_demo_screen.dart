@@ -1,9 +1,13 @@
+// ignore_for_file: unused_element
+
 import 'package:example/modules/location_view_widget.dart';
 import 'package:example/modules/weather_summary_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:open_weather_client/open_weather.dart';
 
+/// A screen that demonstrates the use of prebuilt functions from the OpenWeather package.
 class PrebuiltFunctionScreen extends StatefulWidget {
+  /// Creates a [PrebuiltFunctionScreen].
   const PrebuiltFunctionScreen({super.key});
 
   @override
@@ -33,49 +37,55 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
     // });
   }
 
-  // ignore: unused_element
+  /// Fetches the current weather data by city name.
+  ///
+  /// Returns a [WeatherData] object containing the current weather information.
   Future<WeatherData> _getCurrentweatherByCity() async {
-    return openWeather.currentWeatherByCityName(
-        cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
+    return openWeather.currentWeatherByCityName(cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
   }
 
-  // ignore: unused_element
+  /// Fetches the current weather data by geographic location.
+  ///
+  /// Returns a [WeatherData] object containing the current weather information.
   Future<WeatherData> _getCurrentweatherByLocation() async {
     return openWeather.currentWeatherByLocation(
-        latitude: _latitude,
-        longitude: _longitude,
-        weatherUnits: WeatherUnits.METRIC);
+        latitude: _latitude, longitude: _longitude, weatherUnits: WeatherUnits.METRIC);
   }
 
+  /// Fetches the current weather data by zip code.
+  ///
+  /// Returns a [WeatherData] object containing the current weather information.
   Future<WeatherData> _getCurrentweatherByZipCode() async {
     return openWeather.currentWeatherByZipCode(
-        zipCode: _zipCode,
-        countryCode: _countryCode,
-        weatherUnits: WeatherUnits.METRIC);
+        zipCode: _zipCode, countryCode: _countryCode, weatherUnits: WeatherUnits.METRIC);
   }
 
-  // ignore: unused_element
+  /// Fetches the five-day weather forecast by city name.
+  ///
+  /// Returns a [WeatherForecastData] object containing the weather forecast information.
   Future<WeatherForecastData> _getFiveDaysForecastByCityName() async {
-    return openWeather.fiveDaysWeatherForecastByCityName(
-        cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
+    return openWeather.fiveDaysWeatherForecastByCityName(cityName: _cityName, weatherUnits: WeatherUnits.METRIC);
   }
 
-  // ignore: unused_element
+  /// Fetches the five-day weather forecast by geographic location.
+  ///
+  /// Returns a [WeatherForecastData] object containing the weather forecast information.
   Future<WeatherForecastData> _getFiveDaysForecastByLocation() async {
     return openWeather.fiveDaysWeatherForecastByLocation(
-        latitude: _latitude,
-        longitude: _longitude,
-        weatherUnits: WeatherUnits.METRIC);
+        latitude: _latitude, longitude: _longitude, weatherUnits: WeatherUnits.METRIC);
   }
 
-  // ignore: unused_element
+  /// Fetches the five-day weather forecast by zip code.
+  ///
+  /// Returns a [WeatherForecastData] object containing the weather forecast information.
   Future<WeatherForecastData> _getFiveDaysForecastByZipCode() async {
     return openWeather.fiveDaysWeatherForecastByZipCode(
-        zipCode: _zipCode,
-        countryCode: _countryCode,
-        weatherUnits: WeatherUnits.METRIC);
+        zipCode: _zipCode, countryCode: _countryCode, weatherUnits: WeatherUnits.METRIC);
   }
 
+  /// Builds a button that navigates back to the previous screen.
+  ///
+  /// Returns an [ElevatedButton] widget.
   Widget _buildButton() {
     return ElevatedButton(
       child: const Text('Check with prebuilt widgets'),
@@ -93,9 +103,7 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: const Text('OpenWeather prebuilt functions',
-            style: TextStyle(color: Colors.black),
-            maxLines: 2,
-            textAlign: TextAlign.center),
+            style: TextStyle(color: Colors.black), maxLines: 2, textAlign: TextAlign.center),
       ),
       body: Container(
           width: double.infinity,
@@ -113,19 +121,12 @@ class _PrebuiltFunctionScreenState extends State<PrebuiltFunctionScreen> {
                       ),
                       WeatherSummary(
                         color: Colors.black,
-                        imageUrl:
-                            'https://openweathermap.org/img/wn/${snapshot.data!.details.first.icon}@2x.png',
-                        currentTemperature: snapshot
-                            .data!.temperature.currentTemperature
-                            .toString(),
-                        maxTemperature:
-                            snapshot.data!.temperature.tempMax.toString(),
-                        minTemperature:
-                            snapshot.data!.temperature.tempMin.toString(),
-                        humidity:
-                            snapshot.data!.temperature.humidity.toString(),
-                        pressure:
-                            snapshot.data!.temperature.pressure.toString(),
+                        imageUrl: 'https://openweathermap.org/img/wn/${snapshot.data!.details.first.icon}@2x.png',
+                        currentTemperature: snapshot.data!.temperature.currentTemperature.toString(),
+                        maxTemperature: snapshot.data!.temperature.tempMax.toString(),
+                        minTemperature: snapshot.data!.temperature.tempMin.toString(),
+                        humidity: snapshot.data!.temperature.humidity.toString(),
+                        pressure: snapshot.data!.temperature.pressure.toString(),
                       ),
                       _buildButton()
                     ],

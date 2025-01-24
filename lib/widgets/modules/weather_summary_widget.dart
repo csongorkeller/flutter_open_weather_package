@@ -4,15 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:open_weather_client/models/weather_data.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+/// A widget that displays a summary of the current weather, including the current temperature,
+/// feels-like temperature, and an icon representing the weather condition.
+///
+/// The widget uses data from the [WeatherData] object to display the weather information.
+/// The overall color scheme can be customized using the [color] property.
 class WeatherSummary extends StatelessWidget {
-  /// Built in widget to support easy integration.
-  /// The widget lists current temperature and feels-like value. Also shows the default image from OpenWeather API
-  /// With the help of [color] you specify the overall color scheme.
-  /// Please note, in order to use the widget [weatherData] should not be null.
-  /// For more info, read the documentation.
+  /// The weather data to be displayed by the widget.
+  ///
+  /// This property must not be null.
   final WeatherData weatherData;
+
+  /// The color scheme to be used for the text and icons in the widget.
+  ///
+  /// If null, the default color scheme will be used.
   final Color? color;
 
+  /// Creates a [WeatherSummary] widget.
+  ///
+  /// The [weatherData] parameter must not be null.
+  /// The [color] parameter is optional and can be used to customize the color scheme.
   const WeatherSummary({super.key, required this.weatherData, this.color});
 
   @override
@@ -65,8 +76,7 @@ class WeatherSummary extends StatelessWidget {
             child: Center(
               child: FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
-                image:
-                    'https://openweathermap.org/img/wn/${weatherData.details.first.icon}@2x.png',
+                image: 'https://openweathermap.org/img/wn/${weatherData.details.first.icon}@2x.png',
                 imageErrorBuilder: (context, error, stackTrace) {
                   return Column(
                     children: [

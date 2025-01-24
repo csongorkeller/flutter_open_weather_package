@@ -5,19 +5,41 @@ import 'package:open_weather_client/widgets/modules/location_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_description_view_widget.dart';
 import 'package:open_weather_client/widgets/modules/weather_summary_widget.dart';
 
+/// A widget that displays weather information based on a given zip code and country code.
+///
+/// This widget provides an easy way to integrate weather data into your application.
+/// It requires a valid [apiKey] to fetch the weather data. You can specify the type of
+/// weather units using [weatherUnits], the color of the text using [color], and the
+/// language of the weather data using [language].
 class OpenWeatherByZipCode extends StatefulWidget {
-  /// Built in widget to support easy integration.
-  /// The widget lists some weather data based on the [zipCode] and [countryCode]
-  /// With the help of [weatherUnits] you specify the type of unit.
-  /// Please note, in order to use the widget a valid [apiKey] is required.
-  /// For more info, read the documentation.
+  /// The API key used to fetch weather data.
   final String apiKey;
+
+  /// The zip code for which to fetch weather data.
   final int zipCode;
+
+  /// The country code corresponding to the zip code.
   final String countryCode;
+
+  /// The units in which to display the weather data.
+  ///
+  /// Defaults to [WeatherUnits.IMPERIAL].
   final WeatherUnits weatherUnits;
+
+  /// The color of the text displaying the weather data.
+  ///
+  /// Defaults to [Colors.black].
   final Color color;
+
+  /// The language in which to display the weather data.
+  ///
+  /// Defaults to [Languages.ENGLISH].
   final Languages language;
 
+  /// Creates an instance of [OpenWeatherByZipCode].
+  /// The [apiKey], [zipCode], and [countryCode] parameters are required.
+  /// The [weatherUnits] defaults to [WeatherUnits.IMPERIAL], the [color] defaults to [Colors.black],
+  /// and the [language] defaults to [Languages.ENGLISH].
   const OpenWeatherByZipCode(
       {super.key,
       required this.apiKey,

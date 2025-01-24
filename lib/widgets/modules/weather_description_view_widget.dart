@@ -1,29 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:open_weather_client/models/weather_data.dart';
 
+/// A widget that displays the current weather condition as a string.
+///
+/// The [WeatherDescriptionView] widget provides an easy way to integrate
+/// weather information into your application. It displays the weather
+/// condition in uppercase text, centered on the screen.
+///
+/// The [weatherData] parameter must not be null and should contain the
+/// weather information to be displayed.
+///
+/// The [color] parameter allows you to specify the overall color scheme
+/// of the text.
+///
+/// For more information, refer to the documentation.
 class WeatherDescriptionView extends StatelessWidget {
-  /// Built in widget to support easy integration.
-  /// The widget lists the current weather condition as a String
-  /// With the help of [color] you specify the overall color scheme.
-  /// Please note, in order to use the widget [weatherData] should not be null.
-  /// For more info, read the documentation.
+  /// The weather data to be displayed.
+  ///
+  /// This parameter must not be null.
   final WeatherData weatherData;
+
+  /// The color scheme for the text.
+  ///
+  /// This parameter is optional. If not provided, the default color will be used.
   final Color? color;
 
-  const WeatherDescriptionView(
-      {super.key, required this.weatherData, this.color});
+  /// Creates a [WeatherDescriptionView] widget.
+  ///
+  /// The [weatherData] parameter must not be null.
+  /// The [color] parameter is optional.
+  const WeatherDescriptionView({
+    super.key,
+    required this.weatherData,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child:
-          Text(weatherData.details.first.weatherShortDescription.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w300,
-                color: color,
-              )),
+      child: Text(weatherData.details.first.weatherShortDescription.toUpperCase(),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w300,
+            color: color,
+          )),
     );
   }
 }

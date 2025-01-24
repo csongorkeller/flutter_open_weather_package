@@ -18,7 +18,7 @@ WeatherData _$WeatherDataFromJson(Map json) => WeatherData(
           : Coordinates.fromJson(
               Map<String, dynamic>.from(json['coord'] as Map)),
       name: json['name'] as String?,
-      date: json['dt'] as int,
+      date: (json['dt'] as num).toInt(),
     );
 
 Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>

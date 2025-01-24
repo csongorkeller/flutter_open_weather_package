@@ -1,53 +1,148 @@
+/// An enumeration of supported languages.
 enum Languages {
+  /// Afrikaans language.
   AFRIKAANS,
+
+  /// Albanian language.
   ALBANIAN,
+
+  /// Arabic language.
   ARABIC,
+
+  /// Azerbaijani language.
   AZERBAIJANI,
+
+  /// Bulgarian language.
   BULGARIAN,
+
+  /// Catalan language.
   CATALAN,
+
+  /// Czech language.
   CZECH,
+
+  /// Danish language.
   DANISH,
+
+  /// German language.
   GERMAN,
+
+  /// Greek language.
   GREEK,
+
+  /// English language.
   ENGLISH,
+
+  /// Basque language.
   BASQUE,
+
+  /// Persian (Farsi) language.
   PERSIAN_FARSI,
+
+  /// Farsi language.
   FARSI,
+
+  /// Finnish language.
   FINNISH,
+
+  /// French language.
   FRENCH,
+
+  /// Galician language.
   GALICIAN,
+
+  /// Hebrew language.
   HEBREW,
+
+  /// Hindi language.
   HINDI,
+
+  /// Croatian language.
   CROATIAN,
+
+  /// Hungarian language.
   HUNGARIAN,
+
+  /// Indonesian language.
   INDONESIAN,
+
+  /// Italian language.
   ITALIAN,
+
+  /// Japanese language.
   JAPANESE,
+
+  /// Korean language.
   KOREAN,
+
+  /// Latvian language.
   LATVIAN,
+
+  /// Lithuanian language.
   LITHUANIAN,
+
+  /// Macedonian language.
   MACEDONIAN,
+
+  /// Norwegian language.
   NORWEGIAN,
+
+  /// Dutch language.
   DUTCH,
+
+  /// Polish language.
   POLISH,
+
+  /// Portuguese language.
   PORTUGUESE,
+
+  /// Portuguese (Brazil) language.
   PORTUGUESE_BRAZIL,
+
+  /// Romanian language.
   ROMANIAN,
+
+  /// Russian language.
   RUSSIAN,
+
+  /// Swedish language.
   SWEDISH,
+
+  /// Slovak language.
   SLOVAK,
+
+  /// Slovenian language.
   SLOVENIAN,
+
+  /// Spanish language.
   SPANISH,
+
+  /// Serbian language.
   SERBIAN,
+
+  /// Thai language.
   THAI,
+
+  /// Turkish language.
   TURKISH,
+
+  /// Ukrainian language.
   UKRAINIAN,
+
+  /// Vietnamese language.
   VIETNAMESE,
+
+  /// Chinese (Simplified) language.
   CHINESE_SIMPLIFIED,
+
+  /// Chinese (Traditional) language.
   CHINESE_TRADITIONAL,
+
+  /// Zulu language.
   ZULU,
 }
 
+/// A map that associates each [Languages] enum value with its corresponding language code string.
 Map<Languages, String> languageCodeString = {
   Languages.AFRIKAANS: 'af',
   Languages.ALBANIAN: 'al',

@@ -7,7 +7,7 @@ part of 'details.dart';
 // **************************************************************************
 
 Details _$DetailsFromJson(Map json) => Details(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       weatherShortDescription: json['main'] as String,
       weatherLongDescription: json['description'] as String,
       icon: json['icon'] as String,
