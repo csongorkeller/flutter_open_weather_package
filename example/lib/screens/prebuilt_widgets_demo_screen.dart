@@ -29,8 +29,11 @@ class _PrebuiltWidgetsScreenState extends State<PrebuiltWidgetsScreen> {
   Widget _buildButton() {
     return ElevatedButton(
       child: const Text('Check with prebuilt functions'),
-      onPressed: () =>
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PrebuiltFunctionScreen())),
+      onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  const PrebuiltFunctionScreen())),
     );
   }
 

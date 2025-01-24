@@ -38,13 +38,14 @@ class WeatherDescriptionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(weatherData.details.first.weatherShortDescription.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w300,
-            color: color,
-          )),
+      child:
+          Text(weatherData.details.first.weatherShortDescription.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w300,
+                color: color,
+              )),
     );
   }
 }

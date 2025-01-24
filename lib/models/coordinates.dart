@@ -51,7 +51,8 @@ class Coordinates {
   /// the properties of the [Coordinates] object.
   ///
   /// Returns a [Coordinates] object.
-  factory Coordinates.fromJson(Map<String, dynamic> json) => _$CoordinatesFromJson(json);
+  factory Coordinates.fromJson(Map<String, dynamic> json) =>
+      _$CoordinatesFromJson(json);
 
   /// Converts the [Coordinates] instance to a JSON map.
   ///

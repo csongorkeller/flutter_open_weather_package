@@ -138,17 +138,22 @@ class WeatherSummary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                child: _buildMinMaxRow(icon: Icons.arrow_drop_up_sharp, temperature: maxTemperature),
+                child: _buildMinMaxRow(
+                    icon: Icons.arrow_drop_up_sharp,
+                    temperature: maxTemperature),
               ),
               Container(
-                child: _buildMinMaxRow(icon: Icons.arrow_drop_down_sharp, temperature: minTemperature),
+                child: _buildMinMaxRow(
+                    icon: Icons.arrow_drop_down_sharp,
+                    temperature: minTemperature),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: _buildHumidutyAndPressureRow(humidity: humidity, pressure: pressure),
+          child: _buildHumidutyAndPressureRow(
+              humidity: humidity, pressure: pressure),
         )
       ],
     );

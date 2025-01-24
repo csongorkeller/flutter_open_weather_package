@@ -43,10 +43,12 @@ class OpenWeather {
   /// In order to use the function, [cityName] is required
   /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherData> currentWeatherByCityName(
-      {required String cityName, final Languages? language, WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+      {required String cityName,
+      final Languages? language,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> currentWeather =
-          await _sendRequest('weather', cityName: cityName, weatherUnits: weatherUnits, language: language);
+      Map<String, dynamic> currentWeather = await _sendRequest('weather',
+          cityName: cityName, weatherUnits: weatherUnits, language: language);
       return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
@@ -62,8 +64,11 @@ class OpenWeather {
       final Languages? language,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> currentWeather =
-          await _sendRequest('weather', lat: latitude, lon: longitude, weatherUnits: weatherUnits, language: language);
+      Map<String, dynamic> currentWeather = await _sendRequest('weather',
+          lat: latitude,
+          lon: longitude,
+          weatherUnits: weatherUnits,
+          language: language);
       return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
@@ -80,7 +85,10 @@ class OpenWeather {
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
       Map<String, dynamic> currentWeather = await _sendRequest('weather',
-          zipCode: zipCode, countryCode: countryCode, weatherUnits: weatherUnits, language: language);
+          zipCode: zipCode,
+          countryCode: countryCode,
+          weatherUnits: weatherUnits,
+          language: language);
       return WeatherData.fromJson(currentWeather);
     } catch (err) {
       rethrow;
@@ -91,10 +99,12 @@ class OpenWeather {
   /// In order to use the function, [cityName] is required
   /// It is possible to set the weather units by setting a specific value in [weatherUnits]
   Future<WeatherForecastData> fiveDaysWeatherForecastByCityName(
-      {required String cityName, final Languages? language, WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
+      {required String cityName,
+      final Languages? language,
+      WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> currentWeather =
-          await _sendRequest('forecast', cityName: cityName, weatherUnits: weatherUnits, language: language);
+      Map<String, dynamic> currentWeather = await _sendRequest('forecast',
+          cityName: cityName, weatherUnits: weatherUnits, language: language);
 
       return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {
@@ -111,8 +121,11 @@ class OpenWeather {
       final Languages? language,
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
-      Map<String, dynamic> currentWeather =
-          await _sendRequest('forecast', lat: latitude, lon: longitude, weatherUnits: weatherUnits, language: language);
+      Map<String, dynamic> currentWeather = await _sendRequest('forecast',
+          lat: latitude,
+          lon: longitude,
+          weatherUnits: weatherUnits,
+          language: language);
 
       return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {
@@ -130,7 +143,10 @@ class OpenWeather {
       WeatherUnits weatherUnits = WeatherUnits.IMPERIAL}) async {
     try {
       Map<String, dynamic> currentWeather = await _sendRequest('forecast',
-          zipCode: zipCode, countryCode: countryCode, weatherUnits: weatherUnits, language: language);
+          zipCode: zipCode,
+          countryCode: countryCode,
+          weatherUnits: weatherUnits,
+          language: language);
 
       return WeatherForecastData.fromJson(currentWeather);
     } catch (err) {

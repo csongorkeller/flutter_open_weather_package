@@ -58,7 +58,8 @@ class Temperature {
   });
 
   /// Factory constructor to create a Temperature instance from a JSON map.
-  factory Temperature.fromJson(Map<String, dynamic> json) => _$TemperatureFromJson(json);
+  factory Temperature.fromJson(Map<String, dynamic> json) =>
+      _$TemperatureFromJson(json);
 
   /// Method to convert a Temperature instance to a JSON map.
   Map<String, dynamic> toJson() => _$TemperatureToJson(this);

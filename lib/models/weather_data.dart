@@ -43,7 +43,8 @@ class WeatherData {
   });
 
   /// Factory method to create a WeatherData object from a JSON map
-  factory WeatherData.fromJson(Map<String, dynamic> json) => _$WeatherDataFromJson(json);
+  factory WeatherData.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDataFromJson(json);
 
   /// Method to convert a WeatherData object to a JSON map
   Map<String, dynamic> toJson() => _$WeatherDataToJson(this);

@@ -50,3 +50,7 @@ Easy-to integrate widgets and exported functions are also part of the package.
 ## [2.4.0] - 24/01/2025
 
 * Better documentation added to the whole project
+
+## [2.4.1] - 24/01/2025
+
+* Formatting and package description updated

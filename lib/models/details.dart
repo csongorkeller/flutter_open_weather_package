@@ -44,7 +44,8 @@ class Details {
       required this.icon});
 
   /// Creates a [Details] instance from a JSON object.`
-  factory Details.fromJson(Map<String, dynamic> json) => _$DetailsFromJson(json);
+  factory Details.fromJson(Map<String, dynamic> json) =>
+      _$DetailsFromJson(json);
 
   /// Converts the [Details] instance to a JSON object.
   Map<String, dynamic> toJson() => _$DetailsToJson(this);

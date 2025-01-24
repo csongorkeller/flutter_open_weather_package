@@ -1,6 +1,6 @@
 name: open_weather_client
-description: OpenWeather package for Current and Forecast weather data.
-version: 2.4.0
+description: OpenWeather package for Current and Forecast weather data, providing easy access to weather information.
+version: 2.4.1
 homepage: "https://github.com/csongorkeller/flutter_open_weather_package"
 
 environment:

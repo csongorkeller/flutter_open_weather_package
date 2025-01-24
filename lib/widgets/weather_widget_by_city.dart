@@ -75,7 +75,9 @@ class _OpenWeatherByCityState extends State<OpenWeatherByCity> {
 
   Future<WeatherData> _getCurrentWeatherByCity() async {
     WeatherData wd = await openWeather.currentWeatherByCityName(
-        cityName: widget.cityName, weatherUnits: widget.weatherUnits, language: widget.language);
+        cityName: widget.cityName,
+        weatherUnits: widget.weatherUnits,
+        language: widget.language);
     return wd;
   }
 

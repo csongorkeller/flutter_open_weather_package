@@ -18,7 +18,8 @@ class WeatherForecastData {
   /// Factory constructor to create an instance of [WeatherForecastData] from a JSON map
   ///
   /// Takes a [json] map and returns an instance of [WeatherForecastData].
-  factory WeatherForecastData.fromJson(Map<String, dynamic> json) => _$WeatherForecastDataFromJson(json);
+  factory WeatherForecastData.fromJson(Map<String, dynamic> json) =>
+      _$WeatherForecastDataFromJson(json);
 
   /// Converts an instance of [WeatherForecastData] to a JSON map
   ///

@@ -76,7 +76,8 @@ class WeatherSummary extends StatelessWidget {
             child: Center(
               child: FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
-                image: 'https://openweathermap.org/img/wn/${weatherData.details.first.icon}@2x.png',
+                image:
+                    'https://openweathermap.org/img/wn/${weatherData.details.first.icon}@2x.png',
                 imageErrorBuilder: (context, error, stackTrace) {
                   return Column(
                     children: [
