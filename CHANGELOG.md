@@ -46,3 +46,7 @@ Easy-to integrate widgets and exported functions are also part of the package.
 
 * Language ENUM file updated to match Dart formatter. 
 * Dartdoc documentation included in the project files
+
+## [2.4.0] - 24/01/2025
+
+* Better documentation added to the whole project

@@ -1,7 +1,7 @@
 name: open_weather_client
 description: OpenWeather package for Current and Forecast weather data.
-version: 2.3.1
-homepage: 'https://github.com/csongorkeller/flutter_open_weather_package'
+version: 2.4.0
+homepage: "https://github.com/csongorkeller/flutter_open_weather_package"
 
 environment:
   sdk: ">=2.19.0 <4.0.0"
@@ -20,9 +20,3 @@ dev_dependencies:
   build_runner: any
   json_serializable: any
   flutter_lints: any
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
-flutter:
